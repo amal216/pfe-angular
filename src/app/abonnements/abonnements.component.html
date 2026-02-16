@@ -1,0 +1,47 @@
+<h2>Ajouter Abonnement</h2>
+
+<form (ngSubmit)="ajouterAbonnement()">
+
+  <input [(ngModel)]="nouvelAbonnement.nom_abonnement"
+         name="nom_abonnement"
+         placeholder="Nom Abonnement"
+         required>
+
+  <input [(ngModel)]="nouvelAbonnement.id_logiciel"
+         name="id_logiciel"
+         placeholder="ID Logiciel"
+         type="number"
+         required>
+
+  <input [(ngModel)]="nouvelAbonnement.prix"
+         name="prix"
+         placeholder="Prix"
+         type="number">
+
+  <input [(ngModel)]="nouvelAbonnement.commentaire"
+         name="commentaire"
+         placeholder="Commentaire">
+
+  <button type="submit">Ajouter</button>
+
+</form>
+
+<h2>Liste Abonnements</h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>ID Logiciel</th>
+    <th>Prix</th>
+    <th>Commentaire</th>
+  </tr>
+
+  <tr *ngFor="let a of abonnements">
+    <td>{{a.id_abonnement}}</td>
+    <td>{{a.nom_abonnement}}</td>
+    <td>{{a.id_logiciel}}</td>
+    <td>{{a.prix}}</td>
+    <td>{{a.commentaire}}</td>
+  </tr>
+</table>

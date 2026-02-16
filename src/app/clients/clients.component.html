@@ -1,0 +1,22 @@
+<h2>Liste des Clients</h2>
+
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Pays</th>
+    <th>Projet</th>
+    <th>Statut</th>
+  </tr>
+  <tr *ngFor="let c of clients">
+    <td>{{c.id_client}}</td>
+    <td>{{c.nom}}</td>
+    <td>{{c.prenom}}</td>
+    <td>{{c.pays}}</td>
+    <td>{{c.projet}}</td>
+    <td>{{c.statut}}</td>
+  </tr>
+</table>
+
+<button routerLink="/ajouter-client">Ajouter Client</button>

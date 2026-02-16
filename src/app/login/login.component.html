@@ -1,0 +1,17 @@
+<h2>Connexion</h2>
+
+<form (ngSubmit)="login()">
+  <div>
+    <label>Email :</label>
+    <input [(ngModel)]="user.email" name="email" type="email" required>
+  </div>
+
+  <div>
+    <label>Mot de passe :</label>
+    <input [(ngModel)]="user.password" name="password" type="password" required>
+  </div>
+
+  <button type="submit">Se connecter</button>
+</form>
+
+<p>Pas encore inscrit ? <a routerLink="/register">S’inscrire</a></p>

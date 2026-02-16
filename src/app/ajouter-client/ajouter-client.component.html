@@ -1,0 +1,81 @@
+<h2>Ajouter Client</h2>
+
+<form (ngSubmit)="ajouterClient()">
+  <div>
+    <label>Nom* :</label>
+    <input [(ngModel)]="nouveauClient.nom" name="nom" required>
+  </div>
+
+  <div>
+    <label>Prénom :</label>
+    <input [(ngModel)]="nouveauClient.prenom" name="prenom">
+  </div>
+
+  <div>
+    <label>Téléphone :</label>
+    <input [(ngModel)]="nouveauClient.numero" name="numero">
+  </div>
+
+  <div>
+    <label>Email :</label>
+    <input [(ngModel)]="nouveauClient.email" name="email">
+  </div>
+
+  <div>
+    <label>Pays* :</label>
+    <select [(ngModel)]="nouveauClient.pays" name="pays" required>
+      <option value="">-- Choisir Pays --</option>
+      <option *ngFor="let p of paysList" [value]="p">{{p}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Ville :</label>
+    <input [(ngModel)]="nouveauClient.ville" name="ville">
+  </div>
+
+  <div>
+    <label>Localisation :</label>
+    <input [(ngModel)]="nouveauClient.localisation" name="localisation">
+  </div>
+
+  <div>
+    <label>Projet :</label>
+    <select [(ngModel)]="nouveauClient.projet" name="projet">
+      <option value="">-- Choisir Projet --</option>
+      <option value="Restaurant">Restaurant</option>
+      <option value="Caféteria">Caféteria</option>
+      <option value="Salon de thé">Salon de thé</option>
+      <option value="Patisserie">Patisserie</option>
+      <option value="Librairie">Librairie</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Canal de contact :</label>
+    <select [(ngModel)]="nouveauClient.canal_contact" name="canal_contact">
+      <option value="">-- Choisir Canal --</option>
+      <option value="mail">Mail</option>
+      <option value="telephone">Téléphone</option>
+      <option value="fax">Fax</option>
+      <option value="poste">Poste</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Gérant :</label>
+    <input [(ngModel)]="nouveauClient.gerant" name="gerant">
+  </div>
+
+  <div>
+    <label>Statut :</label>
+    <select [(ngModel)]="nouveauClient.statut" name="statut">
+      <option value="actif">Actif</option>
+      <option value="inactif">Inactif</option>
+    </select>
+  </div>
+
+  <button type="submit">Ajouter</button>
+</form>
+
+<button routerLink="/clients">Voir Liste des Clients</button>

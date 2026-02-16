@@ -1,0 +1,62 @@
+<h2>Ajouter un Pack</h2>
+
+<form (ngSubmit)="ajouterPack()">
+  <input [(ngModel)]="nouveauPack.nom_pack" name="nom_pack" placeholder="Nom du pack" required>
+  <input [(ngModel)]="nouveauPack.prix" name="prix" type="number" placeholder="Prix (DT)">
+
+  <select [(ngModel)]="nouveauPack.disponibilite" name="disponibilite" required>
+    <option value="en stock">En stock</option>
+    <option value="rupture">Rupture</option>
+    <option value="précommande">Précommande</option>
+    <option value="sur commande">Sur commande</option>
+    <option value="épuisé">Épuisé</option>
+    <option value="indisponible">Indisponible</option>
+  </select>
+
+  <select [(ngModel)]="nouveauPack.garantie" name="garantie">
+    <option value="oui">Oui</option>
+    <option value="non">Non</option>
+  </select>
+
+  <select [(ngModel)]="nouveauPack.duree_garantie" name="duree_garantie">
+    <option value="1 an">1 an</option>
+    <option value="6 mois">6 mois</option>
+  </select>
+
+  <input [(ngModel)]="nouveauPack.description" name="description" placeholder="Description">
+
+  <button type="submit">Ajouter</button>
+</form>
+
+<hr>
+
+<h2>Liste des Packs</h2>
+
+<table border="1" cellpadding="10">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Prix</th>
+    <th>Disponibilité</th>
+    <th>Garantie</th>
+    <th>Durée Garantie</th>
+    <th>Description</th>
+    <th>Date création</th>
+    <th>Date modification</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pack of packs">
+    <td>{{ pack.id_pack }}</td>
+    <td>{{ pack.nom_pack }}</td>
+    <td>{{ pack.prix ? (pack.prix + ' DT') : 'N/A' }}</td>
+    <td>{{ pack.disponibilite }}</td>
+    <td>{{ pack.garantie ? pack.garantie : 'N/A' }}</td>
+    <td>{{ pack.duree_garantie ? pack.duree_garantie : 'N/A' }}</td>
+    <td>{{ pack.description ? pack.description : 'N/A' }}</td>
+    <td>{{ pack.created_at | date:'short' }}</td>
+    <td>{{ pack.updated_at | date:'short' }}</td>
+  </tr>
+  </tbody>
+</table>

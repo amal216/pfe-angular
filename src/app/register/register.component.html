@@ -1,0 +1,22 @@
+<h2>Inscription</h2>
+
+<form (ngSubmit)="register()">
+  <div>
+    <label>Nom :</label>
+    <input [(ngModel)]="user.nom" name="nom" required>
+  </div>
+
+  <div>
+    <label>Email :</label>
+    <input [(ngModel)]="user.email" name="email" type="email" required>
+  </div>
+
+  <div>
+    <label>Mot de passe :</label>
+    <input [(ngModel)]="user.password" name="password" type="password" required>
+  </div>
+
+  <button type="submit">S’inscrire</button>
+</form>
+
+<p>Déjà inscrit ? <a routerLink="/login">Se connecter</a></p>

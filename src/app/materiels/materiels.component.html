@@ -1,0 +1,71 @@
+<h2>{{ editMode ? 'Modifier Matériel' : 'Ajouter Matériel' }}</h2>
+
+<form (ngSubmit)="ajouterMateriel()">
+  <input [(ngModel)]="nouveauMateriel.nom_materiel" name="nom_materiel" placeholder="Nom" required>
+  <input [(ngModel)]="nouveauMateriel.categorie" name="categorie" placeholder="Catégorie">
+  <input [(ngModel)]="nouveauMateriel.prix" name="prix" placeholder="Prix" type="number">
+
+  <select [(ngModel)]="nouveauMateriel.disponibilite" name="disponibilite">
+    <option value="en stock">En stock</option>
+    <option value="rupture">Rupture</option>
+    <option value="précommande">Précommande</option>
+    <option value="sur commande">Sur commande</option>
+    <option value="épuisé">Épuisé</option>
+    <option value="indisponible">Indisponible</option>
+  </select>
+
+  <select [(ngModel)]="nouveauMateriel.garantie" name="garantie">
+    <option value="oui">Oui</option>
+    <option value="non">Non</option>
+  </select>
+
+  <select [(ngModel)]="nouveauMateriel.duree_garantie" name="duree_garantie">
+    <option value="1 an">1 an</option>
+    <option value="6 mois">6 mois</option>
+  </select>
+
+  <select [(ngModel)]="nouveauMateriel.gamme" name="gamme">
+    <option value="excellente">Excellente</option>
+    <option value="moyenne">Moyenne</option>
+  </select>
+
+  <input [(ngModel)]="nouveauMateriel.description" name="description" placeholder="Description">
+  <button>{{ editMode ? 'Modifier' : 'Ajouter' }}</button>
+  <button type="button" (click)="resetForm()">Annuler</button>
+</form>
+
+<h2>Liste des Matériels</h2>
+
+<table border="1" cellpadding="5">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Catégorie</th>
+    <th>Prix</th>
+    <th>Disponibilité</th>
+    <th>Garantie</th>
+    <th>Duree</th>
+    <th>Gamme</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let m of materiels">
+    <td>{{ m.id_materiel }}</td>
+    <td>{{ m.nom_materiel }}</td>
+    <td>{{ m.categorie || 'N/A' }}</td>
+    <td>{{ m.prix || 'N/A' }}</td>
+    <td>{{ m.disponibilite }}</td>
+    <td>{{ m.garantie || 'N/A' }}</td>
+    <td>{{ m.duree_garantie || 'N/A' }}</td>
+    <td>{{ m.gamme || 'N/A' }}</td>
+    <td>{{ m.description || 'N/A' }}</td>
+    <td>
+      <button (click)="editMateriel(m)">Modifier</button>
+      <button (click)="deleteMateriel(m.id_materiel)">Supprimer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

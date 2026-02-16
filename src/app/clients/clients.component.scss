@@ -1,0 +1,60 @@
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  input {
+    padding: 5px;
+    font-size: 14px;
+  }
+  .form-row {
+    display: flex;            /* met label et input sur la même ligne */
+    align-items: center;      /* aligne verticalement au milieu */
+    margin-bottom: 10px;      /* espace entre les lignes */
+  }
+
+  .form-row label {
+    width: 150px;             /* largeur fixe pour tous les labels */
+    font-weight: bold;
+  }
+
+  .form-row input,
+  .form-row select {
+    flex: 1;                  /* input prend tout l’espace restant */
+    padding: 5px;
+  }
+
+
+  button {
+    padding: 5px 15px;
+    background-color: #1976d2;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  thead {
+    background-color: #1976d2;
+    color: white;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+}
+
+h2 {
+  margin-bottom: 10px;
+}
