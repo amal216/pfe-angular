@@ -1,0 +1,13 @@
+<h2>Ajouter Avis Client</h2>
+
+<form (ngSubmit)="ajouterAvis()">
+  <input [(ngModel)]="nouvelAvis.id_client" name="id_client" type="number" placeholder="ID Client" required>
+  <input [(ngModel)]="nouvelAvis.projet" name="projet" placeholder="Projet">
+  <input [(ngModel)]="nouvelAvis.date_appel" name="date_appel" type="date">
+  <input [(ngModel)]="nouvelAvis.note_globale" name="note_globale" type="number" min="1" max="5">
+  <input [(ngModel)]="nouvelAvis.note_service" name="note_service" type="number" min="1" max="5">
+  <textarea [(ngModel)]="nouvelAvis.commentaire" name="commentaire" placeholder="Commentaire"></textarea>
+  <button type="submit">Ajouter</button>
+</form>
+
+<button routerLink="/avis-clients">🔙 Retour à la liste</button>

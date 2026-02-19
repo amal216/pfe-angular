@@ -1,31 +1,9 @@
-<h2>Ajouter Logiciel</h2>
-<form (ngSubmit)="ajouterLogiciel()">
-  <input [(ngModel)]="nouveauLogiciel.nom_logiciel" name="nom" placeholder="Nom logiciel" required>
-  <input [(ngModel)]="nouveauLogiciel.version" name="version" placeholder="Version">
-  <input type="number" [(ngModel)]="nouveauLogiciel.prix" name="prix" placeholder="Prix">
-  <input [(ngModel)]="nouveauLogiciel.plateforme" name="plateforme" placeholder="Plateforme">
-
-  <select [(ngModel)]="nouveauLogiciel.disponibilite" name="disponibilite">
-    <option value="en stock">En stock</option>
-    <option value="rupture">Rupture</option>
-    <option value="précommande">Précommande</option>
-    <option value="sur commande">Sur commande</option>
-    <option value="épuisé">Épuisé</option>
-    <option value="indisponible">Indisponible</option>
-  </select>
-
-  <input [(ngModel)]="nouveauLogiciel.description" name="description" placeholder="Description">
-
-  <select [(ngModel)]="nouveauLogiciel.garantie" name="garantie">
-    <option value="oui">Oui</option>
-    <option value="non">Non</option>
-  </select>
-
-  <button type="submit">Ajouter</button>
-</form>
-
 <h2>Liste des Logiciels</h2>
-<table border="1">
+
+<button routerLink="/logiciels/ajouter">➕ Ajouter Logiciel</button>
+
+<table border="1" cellpadding="5">
+  <thead>
   <tr>
     <th>ID</th>
     <th>Nom</th>
@@ -35,15 +13,23 @@
     <th>Disponibilité</th>
     <th>Description</th>
     <th>Garantie</th>
+    <th>Actions</th>
   </tr>
+  </thead>
+  <tbody>
   <tr *ngFor="let l of logiciels">
-    <td>{{l.id_logiciel}}</td>
-    <td>{{l.nom_logiciel}}</td>
-    <td>{{l.version}}</td>
-    <td>{{l.prix}}</td>
-    <td>{{l.plateforme}}</td>
-    <td>{{l.disponibilite}}</td>
-    <td>{{l.description}}</td>
-    <td>{{l.garantie}}</td>
+    <td>{{ l.id_logiciel }}</td>
+    <td>{{ l.nom_logiciel }}</td>
+    <td>{{ l.version }}</td>
+    <td>{{ l.prix }}</td>
+    <td>{{ l.plateforme }}</td>
+    <td>{{ l.disponibilite }}</td>
+    <td>{{ l.description }}</td>
+    <td>{{ l.garantie }}</td>
+    <td>
+      <button (click)="modifierLogiciel(l.id_logiciel)">Modifier</button>
+      <button (click)="supprimerLogiciel(l.id_logiciel)">Supprimer</button>
+    </td>
   </tr>
+  </tbody>
 </table>

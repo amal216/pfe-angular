@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService, Client } from '../services/client.service';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-clients',
@@ -7,7 +7,8 @@ import { ClientService, Client } from '../services/client.service';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
-  clients: Client[] = [];
+
+  clients: any[] = [];
 
   constructor(private clientService: ClientService) {}
 
@@ -15,10 +16,10 @@ export class ClientsComponent implements OnInit {
     this.loadClients();
   }
 
-  loadClients(): void {
+  loadClients() {
     this.clientService.getAll().subscribe({
       next: (data) => this.clients = data,
-      error: (err) => console.error('Erreur chargement clients :', err)
+      error: (err) => console.error('Erreur chargement clients', err)
     });
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,23 +7,27 @@ import { Observable } from 'rxjs';
 })
 export class LogicielService {
 
-  private api = `${environment.apiUrl}/logiciels`;
+  private apiUrl = 'http://localhost:8000/api/logiciels'; // URL de ton backend
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<any[]> {
-    return this.http.get<any[]>(this.api);
+    return this.http.get<any[]>(this.apiUrl);
   }
 
-  add(data: any): Observable<any> {
-    return this.http.post<any>(this.api, data);
+  getById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
-  update(id: number, data: any): Observable<any> {
-    return this.http.put<any>(`${this.api}/${id}`, data);
+  add(logiciel: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, logiciel);
+  }
+
+  update(id: number, logiciel: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, logiciel);
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.api}/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
 }

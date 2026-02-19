@@ -1,89 +1,28 @@
-/* Conteneur principal */
-:host {
-  display: block;
-  padding: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f4f6f9;
-}
-
-/* Titres */
-h2 {
-  color: #2c3e50;
-  margin-bottom: 15px;
-}
-
-/* Formulaire */
-form {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  margin-bottom: 30px;
-  max-width: 500px;
-}
-
-/* Inputs et textarea */
-input,
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #dcdcdc;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-/* Effet focus */
-input:focus,
-textarea:focus {
-  border-color: #3498db;
-  outline: none;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
-}
-
-/* Bouton */
-button {
-  background-color: #3498db;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #2980b9;
-}
-
-/* Tableau */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  thead {
+    background-color: #1976d2;
+    color: white;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
 }
 
-/* En-têtes */
-th {
-  background-color: #2c3e50;
+button[routerLink] {
+  margin-bottom: 15px;
+  padding: 5px 15px;
+  background-color: #1976d2;
   color: white;
-  padding: 12px;
-  text-align: center;
-}
-
-/* Cellules */
-td {
-  padding: 10px;
-  text-align: center;
-  border-bottom: 1px solid #eeeeee;
-}
-
-/* Effet hover sur lignes */
-tr:hover {
-  background-color: #f2f2f2;
+  border: none;
+  cursor: pointer;
 }

@@ -17,7 +17,8 @@ export class LoginComponent {
       next: (res: any) => {
         console.log('Connexion réussie', res);
         localStorage.setItem('token', res.token); // stocker le token
-        this.router.navigate(['/clients']); // rediriger vers la liste clients
+        this.router.navigate(['/dashboard']);
+
       },
       error: (err: any) => {
         console.error(err);

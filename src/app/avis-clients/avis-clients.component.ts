@@ -3,33 +3,24 @@ import { AvisClientService } from '../services/avis-client.service';
 
 @Component({
   selector: 'app-avis-clients',
-  templateUrl: './avis-clients.component.html'
+  templateUrl: './avis-clients.component.html',
+  styleUrls: ['./avis-clients.component.scss']
 })
-export class AvisClientsComponent implements OnInit {
+export class AvisClientComponent implements OnInit {
 
   avisClients: any[] = [];
-  nouvelAvis: any = {};
 
-  constructor(private avisService: AvisClientService) {}
+  constructor(private avisClientService: AvisClientService) {}
 
   ngOnInit(): void {
     this.loadAvisClients();
   }
 
   loadAvisClients() {
-    this.avisService.getAll().subscribe({
+    this.avisClientService.getAll().subscribe({
       next: (data) => this.avisClients = data,
-      error: (err) => console.error('Erreur chargement avis', err)
+      error: (err) => console.error('Erreur chargement avis clients', err)
     });
   }
 
-  ajouterAvis() {
-    this.avisService.add(this.nouvelAvis).subscribe({
-      next: () => {
-        this.loadAvisClients();
-        this.nouvelAvis = {};
-      },
-      error: (err) => console.error('Erreur ajout avis', err)
-    });
-  }
 }

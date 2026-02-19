@@ -1,0 +1,29 @@
+<p>ajouterlogiciel works!</p>
+<h2>{{ isEditing ? 'Modifier Logiciel' : 'Ajouter Logiciel' }}</h2>
+
+<form (ngSubmit)="ajouterLogiciel()">
+  <input [(ngModel)]="nouveauLogiciel.nom_logiciel" name="nom_logiciel" placeholder="Nom logiciel" required>
+  <input [(ngModel)]="nouveauLogiciel.version" name="version" placeholder="Version">
+  <input type="number" [(ngModel)]="nouveauLogiciel.prix" name="prix" placeholder="Prix">
+  <input [(ngModel)]="nouveauLogiciel.plateforme" name="plateforme" placeholder="Plateforme">
+
+  <select [(ngModel)]="nouveauLogiciel.disponibilite" name="disponibilite">
+    <option value="en stock">En stock</option>
+    <option value="rupture">Rupture</option>
+    <option value="précommande">Précommande</option>
+    <option value="sur commande">Sur commande</option>
+    <option value="épuisé">Épuisé</option>
+    <option value="indisponible">Indisponible</option>
+  </select>
+
+  <input [(ngModel)]="nouveauLogiciel.description" name="description" placeholder="Description">
+
+  <select [(ngModel)]="nouveauLogiciel.garantie" name="garantie">
+    <option value="oui">Oui</option>
+    <option value="non">Non</option>
+  </select>
+
+  <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+</form>
+
+<button routerLink="/logiciels">🔙 Retour à la liste</button>

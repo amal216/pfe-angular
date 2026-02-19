@@ -1,0 +1,39 @@
+<p>ajoutermateriel works!</p>
+<h2>{{ editMode ? 'Modifier Matériel' : 'Ajouter Matériel' }}</h2>
+
+<form (ngSubmit)="ajouterMateriel()">
+  <input [(ngModel)]="nouveauMateriel.nom_materiel" name="nom_materiel" placeholder="Nom" required>
+  <input [(ngModel)]="nouveauMateriel.categorie" name="categorie" placeholder="Catégorie">
+  <input [(ngModel)]="nouveauMateriel.prix" name="prix" placeholder="Prix" type="number">
+
+  <select [(ngModel)]="nouveauMateriel.disponibilite" name="disponibilite">
+    <option value="en stock">En stock</option>
+    <option value="rupture">Rupture</option>
+    <option value="précommande">Précommande</option>
+    <option value="sur commande">Sur commande</option>
+    <option value="épuisé">Épuisé</option>
+    <option value="indisponible">Indisponible</option>
+  </select>
+
+  <select [(ngModel)]="nouveauMateriel.garantie" name="garantie">
+    <option value="oui">Oui</option>
+    <option value="non">Non</option>
+  </select>
+
+  <select [(ngModel)]="nouveauMateriel.duree_garantie" name="duree_garantie">
+    <option value="1 an">1 an</option>
+    <option value="6 mois">6 mois</option>
+  </select>
+
+  <select [(ngModel)]="nouveauMateriel.gamme" name="gamme">
+    <option value="excellente">Excellente</option>
+    <option value="moyenne">Moyenne</option>
+  </select>
+
+  <input [(ngModel)]="nouveauMateriel.description" name="description" placeholder="Description">
+
+  <button type="submit">{{ editMode ? 'Modifier' : 'Ajouter' }}</button>
+  <button type="button" (click)="resetForm()">Annuler</button>
+</form>
+
+<button routerLink="/materiels">🔙 Retour à la liste</button>

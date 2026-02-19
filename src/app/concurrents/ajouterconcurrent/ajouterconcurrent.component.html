@@ -1,0 +1,22 @@
+<p>ajouterconcurrent works!</p>
+<h2>{{ isEditing ? 'Modifier Concurrent' : 'Ajouter Concurrent' }}</h2>
+
+<form (ngSubmit)="ajouterConcurrent()">
+  <input [(ngModel)]="nouveauConcurrent.nom" name="nom" placeholder="Nom" required>
+  <input [(ngModel)]="nouveauConcurrent.secteur" name="secteur" placeholder="Secteur" required>
+  <input [(ngModel)]="nouveauConcurrent.pays" name="pays" placeholder="Pays" required>
+  <input [(ngModel)]="nouveauConcurrent.ville" name="ville" placeholder="Ville" required>
+  <input [(ngModel)]="nouveauConcurrent.numero" name="numero" placeholder="Téléphone">
+  <input [(ngModel)]="nouveauConcurrent.email" name="email" placeholder="Email">
+  <input [(ngModel)]="nouveauConcurrent.site_web" name="site_web" placeholder="Site web">
+  <input [(ngModel)]="nouveauConcurrent.points_forts" name="points_forts" placeholder="Points forts">
+  <input [(ngModel)]="nouveauConcurrent.points_faibles" name="points_faibles" placeholder="Points faibles">
+  <input [(ngModel)]="nouveauConcurrent.part_de_marche" name="part_de_marche" placeholder="Part de marché">
+  <input [(ngModel)]="nouveauConcurrent.strategie_prix" name="strategie_prix" placeholder="Stratégie prix">
+  <input [(ngModel)]="nouveauConcurrent.strategie_marketing" name="strategie_marketing" placeholder="Stratégie marketing">
+  <input [(ngModel)]="nouveauConcurrent.remarques" name="remarques" placeholder="Remarques">
+
+  <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+</form>
+
+<button routerLink="/concurrents">🔙 Retour à la liste</button>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PacksService } from '../services/packs.service';
-
+import { Router } from '@angular/router';
+import { PackService, Pack } from '../services/packs.service'; // CHEMIN CORRIGÉ
 
 @Component({
   selector: 'app-packs',
@@ -9,43 +9,34 @@ import { PacksService } from '../services/packs.service';
 })
 export class PacksComponent implements OnInit {
 
-  packs: any[] = [];
-  nouveauPack: any = {
-    nom_pack: '',
-    prix: 0,
-    disponibilite: 'en stock',
-    garantie: 'oui',
-    duree_garantie: '1 an',
-    description: ''
-  };
+  packs: Pack[] = [];
 
-  constructor(private packsService: PacksService) {}
+  constructor(
+    private packService: PackService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadPacks();
   }
 
-  loadPacks() {
-    this.packsService.getPacks().subscribe({
-      next: (data: any[]) => { this.packs = data; },
-      error: (err: any) => { console.error('Erreur chargement packs', err); }
+  loadPacks(): void {
+    this.packService.getAll().subscribe({
+      next: (data: Pack[]) => this.packs = data,
+      error: (err: any) => console.error('Erreur chargement packs', err)
     });
   }
 
-  ajouterPack() {
-    this.packsService.addPack(this.nouveauPack).subscribe({
-      next: (data: any) => {
-        this.loadPacks();
-        this.nouveauPack = {
-          nom_pack: '',
-          prix: 0,
-          disponibilite: 'en stock',
-          garantie: 'oui',
-          duree_garantie: '1 an',
-          description: ''
-        };
-      },
-      error: (err: any) => { console.error('Erreur ajout pack', err); }
-    });
+  modifierPack(id: number): void {
+    this.router.navigate(['/packs/ajouter', id]).catch(err => console.error(err));
+  }
+
+  supprimerPack(id: number): void {
+    if (confirm('Voulez-vous vraiment supprimer ce pack ?')) {
+      this.packService.delete(id).subscribe({
+        next: () => this.loadPacks(),
+        error: (err: any) => console.error('Erreur suppression pack', err)
+      });
+    }
   }
 }

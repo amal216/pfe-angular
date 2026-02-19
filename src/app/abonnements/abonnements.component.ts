@@ -10,13 +10,6 @@ export class AbonnementsComponent implements OnInit {
 
   abonnements: any[] = [];
 
-  nouvelAbonnement: any = {
-    nom_abonnement: '',
-    id_logiciel: null,
-    prix: null,
-    commentaire: ''
-  };
-
   constructor(private abonnementService: AbonnementService) {}
 
   ngOnInit(): void {
@@ -30,33 +23,4 @@ export class AbonnementsComponent implements OnInit {
     });
   }
 
-  ajouterAbonnement() {
-    // Vérifie que id_logiciel est un nombre
-    if (!this.nouvelAbonnement.id_logiciel) {
-      alert('ID Logiciel est requis et doit être un nombre');
-      return;
-    }
-
-    this.abonnementService.add(this.nouvelAbonnement).subscribe({
-      next: (data) => {
-        alert('Abonnement ajouté avec succès ✅');
-        this.loadAbonnements();
-        this.resetForm();
-      },
-      error: (err) => {
-        console.error('Erreur ajout abonnement', err);
-        let msg = err.error?.message || 'Vérifie les champs et le serveur';
-        alert('Erreur lors de l’ajout ❌ : ' + msg);
-      }
-    });
-  }
-
-  resetForm() {
-    this.nouvelAbonnement = {
-      nom_abonnement: '',
-      id_logiciel: null,
-      prix: null,
-      commentaire: ''
-    };
-  }
 }

@@ -1,0 +1,17 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+
+  input {
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+button[routerLink] {
+  margin-top: 15px;
+}

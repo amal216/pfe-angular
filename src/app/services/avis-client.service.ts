@@ -1,28 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+export interface AvisClient {
+  id?: number;
+  id_client: number;
+  projet?: string;
+  date_appel?: string;
+  note_globale?: number;
+  note_service?: number;
+  commentaire?: string;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
 export class AvisClientService {
 
-  private api = environment.apiUrl + '/avis-clients';
+  private apiUrl = 'http://localhost:8000/api/avis-clients';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAll(): Observable<any[]> {
-    return this.http.get<any[]>(this.api);
+  getAll(): Observable<AvisClient[]> {
+    return this.http.get<AvisClient[]>(this.apiUrl);
   }
 
-  add(avis: any): Observable<any> {
-    return this.http.post<any>(this.api, avis);
+  add(avis: AvisClient): Observable<AvisClient> {
+    return this.http.post<AvisClient>(this.apiUrl, avis);
   }
 
-  update(id: number, avis: any): Observable<any> {
-    return this.http.put<any>(`${this.api}/${id}`, avis);
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
-  delete(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.api}/${id}`);
+  update(id: number, avis: AvisClient): Observable<AvisClient> {
+    return this.http.put<AvisClient>(`${this.apiUrl}/${id}`, avis);
   }
 }

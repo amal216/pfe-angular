@@ -1,0 +1,12 @@
+<h2>{{ isEditing ? 'Modifier Pack' : 'Ajouter Pack' }}</h2>
+
+<form #packForm="ngForm" (ngSubmit)="save(packForm)">
+  <input [(ngModel)]="pack.nom" name="nom" placeholder="Nom" required>
+  <input [(ngModel)]="pack.description" name="description" placeholder="Description">
+  <input [(ngModel)]="pack.prix" name="prix" placeholder="Prix" type="number">
+
+  <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+</form>
+
+<!-- Bouton retour -->
+<button routerLink="/packs" style="margin-top: 10px;">🔙 Retour à la liste</button>

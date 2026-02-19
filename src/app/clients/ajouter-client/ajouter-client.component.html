@@ -1,0 +1,31 @@
+<h2>Ajouter un Client</h2>
+
+<form (ngSubmit)="ajouterClient()">
+
+  <input [(ngModel)]="nouveauClient.nom"
+         name="nom"
+         placeholder="Nom"
+         required>
+
+  <input [(ngModel)]="nouveauClient.prenom"
+         name="prenom"
+         placeholder="Prénom"
+         required>
+
+  <input [(ngModel)]="nouveauClient.pays"
+         name="pays"
+         placeholder="Pays">
+
+  <input [(ngModel)]="nouveauClient.projet"
+         name="projet"
+         placeholder="Projet">
+
+  <input [(ngModel)]="nouveauClient.statut"
+         name="statut"
+         placeholder="Statut">
+
+  <button type="submit">Ajouter</button>
+
+</form>
+
+<button routerLink="/clients">🔙 Retour à la liste</button>

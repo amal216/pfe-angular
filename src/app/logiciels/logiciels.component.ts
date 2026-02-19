@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LogicielService } from '../services/logiciel.service';
 
 @Component({
@@ -9,17 +10,11 @@ import { LogicielService } from '../services/logiciel.service';
 export class LogicielsComponent implements OnInit {
 
   logiciels: any[] = [];
-  nouveauLogiciel: any = {
-    nom_logiciel: '',
-    version: '',
-    prix: 0,
-    plateforme: '',
-    disponibilite: 'en stock',
-    description: '',
-    garantie: 'oui'
-  };
 
-  constructor(private logicielService: LogicielService) {}
+  constructor(
+    private logicielService: LogicielService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadLogiciels();
@@ -27,29 +22,21 @@ export class LogicielsComponent implements OnInit {
 
   loadLogiciels() {
     this.logicielService.getAll().subscribe({
-      next: (data: any[]) => { this.logiciels = data; },
-      error: (err: any) => { console.error('Erreur chargement logiciels', err); }
+      next: data => this.logiciels = data,
+      error: err => console.error('Erreur chargement logiciels', err)
     });
   }
 
-  ajouterLogiciel() {
-    this.logicielService.add(this.nouveauLogiciel).subscribe({
-      next: (data: any) => {
-        this.loadLogiciels(); // recharge la liste
-        // Reset formulaire
-        this.nouveauLogiciel = {
-          nom_logiciel: '',
-          version: '',
-          prix: 0,
-          plateforme: '',
-          disponibilite: 'en stock',
-          description: '',
-          garantie: 'oui'
-        };
-      },
-      error: (err: any) => {
-        console.error('Erreur ajout logiciel', err);
-      }
-    });
+  modifierLogiciel(id: number) {
+    this.router.navigate(['/logiciels/ajouter', id]);
+  }
+
+  supprimerLogiciel(id: number) {
+    if(confirm('Voulez-vous vraiment supprimer ce logiciel ?')) {
+      this.logicielService.delete(id).subscribe({
+        next: () => this.loadLogiciels(),
+        error: err => console.error('Erreur suppression logiciel', err)
+      });
+    }
   }
 }

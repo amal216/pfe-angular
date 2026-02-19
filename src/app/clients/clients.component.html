@@ -1,5 +1,7 @@
 <h2>Liste des Clients</h2>
 
+<button routerLink="/clients/ajouter">➕ Ajouter Client</button>
+
 <table border="1">
   <tr>
     <th>ID</th>
@@ -9,6 +11,7 @@
     <th>Projet</th>
     <th>Statut</th>
   </tr>
+
   <tr *ngFor="let c of clients">
     <td>{{c.id_client}}</td>
     <td>{{c.nom}}</td>
@@ -18,5 +21,3 @@
     <td>{{c.statut}}</td>
   </tr>
 </table>
-
-<button routerLink="/ajouter-client">Ajouter Client</button>

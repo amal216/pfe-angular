@@ -5,15 +5,9 @@ import { Observable } from 'rxjs';
 export interface Client {
   id_client?: number;
   nom: string;
-  prenom?: string;
-  numero?: string;
-  email?: string;
-  pays: string;
-  ville?: string;
-  localisation?: string;
+  prenom: string;
+  pays?: string;
   projet?: string;
-  canal_contact?: string;
-  gerant?: string;
   statut?: string;
 }
 
@@ -21,6 +15,7 @@ export interface Client {
   providedIn: 'root'
 })
 export class ClientService {
+
   private apiUrl = 'http://localhost:8000/api/clients';
 
   constructor(private http: HttpClient) {}

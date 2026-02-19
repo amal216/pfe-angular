@@ -1,44 +1,28 @@
-<p>avis-clients works!</p>
-<h2>Ajouter Avis Client</h2>
+<h2>Liste des Avis Clients</h2>
 
-<form (ngSubmit)="ajouterAvis()">
+<button routerLink="/avis-client/ajouter">➕ Ajouter Avis Client</button>
 
-  <input [(ngModel)]="nouvelAvis.id_client" name="id_client" type="number" placeholder="ID Client" required>
-
-  <input [(ngModel)]="nouvelAvis.projet" name="projet" placeholder="Projet">
-
-  <input [(ngModel)]="nouvelAvis.date_appel" name="date_appel" type="date">
-
-  <input [(ngModel)]="nouvelAvis.note_globale" name="note_globale" type="number" min="1" max="5">
-
-  <input [(ngModel)]="nouvelAvis.note_service" name="note_service" type="number" min="1" max="5">
-
-  <textarea [(ngModel)]="nouvelAvis.commentaire" name="commentaire" placeholder="Commentaire"></textarea>
-
-  <button type="submit">Ajouter</button>
-
-</form>
-
-<hr>
-
-<h2>Liste Avis Clients</h2>
-
-<table border="1">
+<table>
+  <thead>
   <tr>
     <th>ID</th>
     <th>Client</th>
     <th>Projet</th>
     <th>Date Appel</th>
     <th>Note Globale</th>
+    <th>Note Service</th>
     <th>Commentaire</th>
   </tr>
-
+  </thead>
+  <tbody>
   <tr *ngFor="let a of avisClients">
-    <td>{{a.id}}</td>
-    <td>{{a.id_client}}</td>
-    <td>{{a.projet}}</td>
-    <td>{{a.date_appel}}</td>
-    <td>{{a.note_globale}}</td>
-    <td>{{a.commentaire}}</td>
+    <td>{{ a.id }}</td>
+    <td>{{ a.id_client }}</td>
+    <td>{{ a.projet }}</td>
+    <td>{{ a.date_appel }}</td>
+    <td>{{ a.note_globale }}</td>
+    <td>{{ a.note_service }}</td>
+    <td>{{ a.commentaire }}</td>
   </tr>
+  </tbody>
 </table>

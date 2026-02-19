@@ -1,0 +1,28 @@
+<h2>Ajouter un Abonnement</h2>
+
+<form (ngSubmit)="ajouterAbonnement()">
+  <input [(ngModel)]="nouvelAbonnement.nom_abonnement"
+         name="nom_abonnement"
+         placeholder="Nom Abonnement"
+         required>
+
+  <input [(ngModel)]="nouvelAbonnement.id_logiciel"
+         name="id_logiciel"
+         placeholder="ID Logiciel"
+         type="number"
+         required>
+
+  <input [(ngModel)]="nouvelAbonnement.prix"
+         name="prix"
+         placeholder="Prix"
+         type="number">
+
+  <input [(ngModel)]="nouvelAbonnement.commentaire"
+         name="commentaire"
+         placeholder="Commentaire">
+
+  <button type="submit">Ajouter</button>
+</form>
+
+<!-- Bouton pour revenir à la liste -->
+<button routerLink="/abonnements">🔙 Retour à la liste</button>
