@@ -1,35 +1,135 @@
+/* Corps de page */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f0f4f8;
+  margin: 20px;
+}
+
+/* Titre */
+h2 {
+  margin-bottom: 15px;
+  color: #1565c0;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Bouton Ajouter */
+button.table-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+  background-color: #1e88e5;
+  color: white;
+}
+
+button.table-btn:hover {
+  background-color: #1565c0;
+}
+
+/* Tableau */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
   font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  border: 2px solid black; /* Bordure externe noire */
 }
 
-thead {
-  background-color: #1976d2;
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border: 1px solid black; /* Lignes internes noires */
+}
+
+/* ============================= */
+/* COLONNE ACTIONS ALIGNÉE */
+/* ============================= */
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Bouton Modifier */
+.btn-edit {
+  background-color: #1e88e5;
   color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.btn-edit:hover {
+  background-color: #1565c0;
+}
+
+/* Bouton Supprimer */
+.btn-delete {
+  background-color: #1e88e5;
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+.btn-delete:hover {
+  background-color: #1565c0;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media screen and (max-width: 900px) {
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
 
   th {
+    background-color: #1e88e5;
+    color: white;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td::before {
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 10px;
-    text-align: left;
+    background-color: #f8fbff;
   }
-}
 
-tbody {
-  tr {
-    &:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    td {
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-    }
+  /* IMPORTANT : garder les boutons horizontaux */
+  .actions {
+    display: flex !important;
+    gap: 8px;
   }
-}
-
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
 }

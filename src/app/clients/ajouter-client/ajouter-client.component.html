@@ -1,31 +1,144 @@
-<h2>Ajouter un Client</h2>
+<h2>{{ idClient ? 'Modifier Client' : 'Ajouter Client' }}</h2>
 
-<form (ngSubmit)="ajouterClient()">
+<form (ngSubmit)="ajouterClient()" #clientForm="ngForm">
+  <div>
+    <label>CIN :</label>
+    <input type="text"
+           [(ngModel)]="nouveauClient.cin"
+           name="cin"
+           required>
+  </div>
+  <div>
+    <label for="nom">Nom :</label>
+    <input id="nom"
+           [(ngModel)]="nouveauClient.nom"
+           name="nom"
+           required>
+  </div>
 
-  <input [(ngModel)]="nouveauClient.nom"
-         name="nom"
-         placeholder="Nom"
-         required>
+  <div>
+    <label for="prenom">Prénom :</label>
+    <input id="prenom"
+           [(ngModel)]="nouveauClient.prenom"
+           name="prenom">
+  </div>
 
-  <input [(ngModel)]="nouveauClient.prenom"
-         name="prenom"
-         placeholder="Prénom"
-         required>
+  <div>
+    <label for="numero">Numéro :</label>
+    <input id="numero"
+           [(ngModel)]="nouveauClient.numero"
+           name="numero">
+  </div>
 
-  <input [(ngModel)]="nouveauClient.pays"
-         name="pays"
-         placeholder="Pays">
+  <div>
+    <label for="email">Email :</label>
+    <input id="email"
+           type="email"
+           [(ngModel)]="nouveauClient.email"
+           name="email">
+  </div>
 
-  <input [(ngModel)]="nouveauClient.projet"
-         name="projet"
-         placeholder="Projet">
+  <div>
+    <label for="pays">Pays :</label>
+    <select id="pays"
+            [(ngModel)]="nouveauClient.pays"
+            name="pays">
+      <option value="Tunisie">Tunisie</option>
+      <option value="Zimbabwe">Zimbabwe</option>
+      <option value="Zambie">Zambie</option>
+      <option value="Togo">Togo</option>
+      <option value="Tchad">Tchad</option>
+      <option value="Sénégal">Sénégal</option>
+      <option value="Nigéria">Nigéria</option>
+      <option value="Niger">Niger</option>
+      <option value="Mozambique">Mozambique</option>
+      <option value="Mauritanie">Mauritanie</option>
+      <option value="Maroc">Maroc</option>
+      <option value="Mali">Mali</option>
+      <option value="Libye">Libye</option>
+      <option value="Kenya">Kenya</option>
+      <option value="Guinée">Guinée</option>
+      <option value="Ghana">Ghana</option>
+      <option value="Gambie">Gambie</option>
+      <option value="Gabon">Gabon</option>
+      <option value="Éthiopie">Éthiopie</option>
+      <option value="Égypte">Égypte</option>
+      <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+      <option value="Congo RDC">Congo RDC</option>
+      <option value="Cameroun">Cameroun</option>
+      <option value="Burkina Faso">Burkina Faso</option>
+      <option value="Angola">Angola</option>
+      <option value="Algérie">Algérie</option>
+      <option value="Afrique du Sud">Afrique du Sud</option>
+      <option value="Autre">Autre</option>
+    </select>
+  </div>
 
-  <input [(ngModel)]="nouveauClient.statut"
-         name="statut"
-         placeholder="Statut">
+  <div>
+    <label for="ville">Ville :</label>
+    <input id="ville"
+           [(ngModel)]="nouveauClient.ville"
+           name="ville">
+  </div>
 
-  <button type="submit">Ajouter</button>
+  <div>
+    <label for="localisation">Localisation :</label>
+    <input id="localisation"
+           [(ngModel)]="nouveauClient.localisation"
+           name="localisation">
+  </div>
+
+  <div>
+    <label>Gérant :</label>
+    <select [(ngModel)]="nouveauClient.gerant" name="gerant" required>
+      <option value="">-- Sélectionner Gérant --</option>
+      <option value="Ali">Ali</option>
+      <option value="Ahmed">Ahmed</option>
+      <option value="Sami">Sami</option>
+    </select>
+  </div>
+  <div>
+    <label>Projet :</label>
+    <select [(ngModel)]="nouveauClient.projet" name="projet" required>
+      <option value="">-- Sélectionner Projet --</option>
+      <option value="Projet A">Resto</option>
+      <option value="Projet B">Salon de thé</option>
+      <option value="Projet C">Patisserie</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="canal_contact">Canal-contact :</label>
+    <select id="canal_contact"
+            [(ngModel)]="nouveauClient.canal_contact"
+            name="canal_contact"
+            required>
+      <option value="telephone">Téléphone</option>
+      <option value="email">Email</option>
+      <option value="fax">Fax</option>
+      <option value="autre">Autre</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="statut">Statut :</label>
+    <select id="statut"
+            [(ngModel)]="nouveauClient.statut"
+            name="statut"
+            required>
+      <option value="actif">Actif</option>
+      <option value="inactif">Inactif</option>
+    </select>
+  </div>
+
+  <br>
+
+  <button type="submit" [disabled]="!clientForm.form.valid">
+    {{ idClient ? 'Modifier' : 'Ajouter' }}
+  </button>
+
+  <button type="button" routerLink="/clients">
+    ⬅ Retour à la liste
+  </button>
 
 </form>
-
-<button routerLink="/clients">🔙 Retour à la liste</button>

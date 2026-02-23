@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PackService, Pack } from '../services/packs.service'; // CHEMIN CORRIGÉ
+import { PackService, Pack } from '../services/packs.service';
 
 @Component({
   selector: 'app-packs',
@@ -22,20 +22,20 @@ export class PacksComponent implements OnInit {
 
   loadPacks(): void {
     this.packService.getAll().subscribe({
-      next: (data: Pack[]) => this.packs = data,
-      error: (err: any) => console.error('Erreur chargement packs', err)
+      next: data => this.packs = data,
+      error: err => console.error('Erreur chargement packs', err)
     });
   }
 
   modifierPack(id: number): void {
-    this.router.navigate(['/packs/ajouter', id]).catch(err => console.error(err));
+    this.router.navigate(['/packs/ajouter', id]);
   }
 
   supprimerPack(id: number): void {
     if (confirm('Voulez-vous vraiment supprimer ce pack ?')) {
       this.packService.delete(id).subscribe({
         next: () => this.loadPacks(),
-        error: (err: any) => console.error('Erreur suppression pack', err)
+        error: err => console.error('Erreur suppression pack', err)
       });
     }
   }

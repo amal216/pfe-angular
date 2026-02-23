@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Composants existants
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientsComponent } from './clients/clients.component';
 import { AjouterclientComponent } from './clients/ajouter-client/ajouter-client.component';
 import { LogicielsComponent } from './logiciels/logiciels.component';
@@ -15,51 +13,44 @@ import { AjouterPackComponent } from './packs/ajouterpack/ajouterpack.component'
 import { MaterielsComponent } from './materiels/materiels.component';
 import { AjouterMaterielComponent } from './materiels/ajoutermateriel/ajoutermateriel.component';
 import { ConcurrentsComponent } from './concurrents/concurrents.component';
-
 import { AjouterLogicielComponent } from './logiciels/ajouterlogiciel/ajouterlogiciel.component';
 import { AjouterConcurrentComponent } from './concurrents/ajouterconcurrent/ajouterconcurrent.component';
 import { AvisClientComponent } from './avis-clients/avis-clients.component';
+import { AjouterAvisClientComponent } from './avis-clients/ajouteravisclient/ajouteravisclient.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  // Page par défaut
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-
-  // Authentification
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
 
-  // Dashboard
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'clients', component: ClientsComponent, canActivate: [AuthGuard] },
+  { path: 'clients/ajouter', component: AjouterclientComponent, canActivate: [AuthGuard] },
+  { path: 'clients/modifier/:id', component: AjouterclientComponent, canActivate: [AuthGuard] },
 
-  // Clients
-  { path: 'clients', component: ClientsComponent },
-  { path: 'clients/ajouter', component: AjouterclientComponent },
+  { path: 'logiciels', component: LogicielsComponent, canActivate: [AuthGuard] },
+  { path: 'logiciels/ajouter', component: AjouterLogicielComponent, canActivate: [AuthGuard] },
+  { path: 'logiciels/ajouter/:id', component: AjouterLogicielComponent, canActivate: [AuthGuard] },
 
-  { path: 'logiciels', component: LogicielsComponent },
-  { path: 'logiciels/ajouter', component: AjouterLogicielComponent },
-  { path: 'logiciels/ajouter/:id', component: AjouterLogicielComponent },
+  { path: 'abonnements', component: AbonnementsComponent, canActivate: [AuthGuard] },
+  { path: 'abonnements/ajouter', component: AjouterAbonnementComponent, canActivate: [AuthGuard] },
+  { path: 'abonnements/ajouter/:id', component: AjouterAbonnementComponent, canActivate: [AuthGuard] },
 
-  // Abonnements
-  { path: 'abonnements', component: AbonnementsComponent },
-  { path: 'abonnements/ajouter', component: AjouterAbonnementComponent },
+  { path: 'packs', component: PacksComponent, canActivate: [AuthGuard] },
+  { path: 'packs/ajouter', component: AjouterPackComponent, canActivate: [AuthGuard] },
+  { path: 'packs/ajouter/:id', component: AjouterPackComponent, canActivate: [AuthGuard] },
 
-  { path: 'packs', component: PacksComponent },
-  { path: 'packs/ajouter', component: AjouterPackComponent },
-  { path: 'packs/ajouter/:id', component: AjouterPackComponent },
+  { path: 'materiels', component: MaterielsComponent, canActivate: [AuthGuard] },
+  { path: 'materiels/ajouter', component: AjouterMaterielComponent, canActivate: [AuthGuard] },
+  { path: 'materiels/ajouter/:id', component: AjouterMaterielComponent, canActivate: [AuthGuard] },
 
-  { path: 'materiels', component: MaterielsComponent },
-  { path: 'materiels/ajouter', component: AjouterMaterielComponent },
-  { path: 'materiels/ajouter/:id', component: AjouterMaterielComponent },
+  { path: 'concurrents', component: ConcurrentsComponent, canActivate: [AuthGuard] },
+  { path: 'concurrents/ajouter', component: AjouterConcurrentComponent, canActivate: [AuthGuard] },
+  { path: 'concurrents/ajouter/:id', component: AjouterConcurrentComponent, canActivate: [AuthGuard] },
 
-  // Concurrents
-  { path: 'concurrents', component: ConcurrentsComponent },
-  { path: 'concurrents/ajouter', component: AjouterConcurrentComponent },
-  { path: 'concurrents/ajouter/:id', component: AjouterConcurrentComponent }, // modification
+  { path: 'avis-clients', component: AvisClientComponent, canActivate: [AuthGuard] },
+  { path: 'avis-clients/ajouter', component: AjouterAvisClientComponent, canActivate: [AuthGuard] },
 
-  // Avis clients
-  { path: 'avis-clients', component: AvisClientComponent },
-
-  // Fallback (toute autre route)
   { path: '**', redirectTo: '/login' }
 ];
 

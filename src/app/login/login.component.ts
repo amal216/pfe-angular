@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { AuthService, User } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +8,21 @@ import { AuthService, User } from '../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  user: User = { email: '', password: '' };
+  email = '';
+  mot_de_passe = '';
+  message = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   login() {
-    this.authService.login(this.user).subscribe({
-      next: (res: any) => {
-        console.log('Connexion réussie', res);
-        localStorage.setItem('token', res.token); // stocker le token
-        this.router.navigate(['/dashboard']);
-
+    this.auth.login({ email: this.email, mot_de_passe: this.mot_de_passe }).subscribe({
+      next: (res) => {
+        this.auth.storeUser(res.user);
+        this.message = res.message;
+        this.router.navigate(['/avis-clients']);
       },
-      error: (err: any) => {
-        console.error(err);
-        alert('Erreur de connexion');
+      error: (err) => {
+        this.message = err.error.message || 'Erreur';
       }
     });
   }

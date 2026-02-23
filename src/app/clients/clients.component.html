@@ -1,23 +1,54 @@
 <h2>Liste des Clients</h2>
 
-<button routerLink="/clients/ajouter">➕ Ajouter Client</button>
+<button type="button"
+        routerLink="/clients/ajouter"
+        class="add-client">
+  ➕ Ajouter Client
+</button>
+
+<br><br>
 
 <table border="1">
   <tr>
     <th>ID</th>
+    <th>CIN</th>
     <th>Nom</th>
     <th>Prénom</th>
+    <th>Numéro</th>
+    <th>Email</th>
     <th>Pays</th>
+    <th>Ville</th>
+    <th>Localisation</th>
+    <th>Gérant</th>
     <th>Projet</th>
+    <th>Canal Contact</th>
     <th>Statut</th>
+    <th>Actions</th>
   </tr>
 
   <tr *ngFor="let c of clients">
-    <td>{{c.id_client}}</td>
-    <td>{{c.nom}}</td>
-    <td>{{c.prenom}}</td>
-    <td>{{c.pays}}</td>
-    <td>{{c.projet}}</td>
-    <td>{{c.statut}}</td>
+    <td>{{ c.id_client }}</td>
+    <td>{{c.cin}}</td>
+    <td>{{ c.nom }}</td>
+    <td>{{ c.prenom }}</td>
+    <td>{{ c.numero }}</td>
+    <td>{{ c.email }}</td>
+    <td>{{ c.pays }}</td>
+    <td>{{ c.ville }}</td>
+    <td>{{ c.localisation }}</td>
+    <td>{{ c.gerant }}</td>
+    <td>{{ c.projet }}</td>
+    <td>{{ c.canal_contact }}</td>
+    <td>{{ c.statut }}</td>
+    <td>
+      <button type="button"
+              [routerLink]="['/clients/modifier', c.id_client]">
+        ✏ Modifier
+      </button>
+
+      <button (click)="supprimerClient(c.id_client!)">
+        🗑 Supprimer
+      </button>
+    </td>
   </tr>
 </table>

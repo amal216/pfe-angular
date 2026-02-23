@@ -1,8 +1,10 @@
 <h2>Liste des Concurrents</h2>
 
-<button routerLink="/concurrents/ajouter">➕ Ajouter Concurrent</button>
+<button routerLink="/concurrents/ajouter" class="table-btn">
+  ➕ Ajouter concurrents
+</button>
 
-<table border="1" cellpadding="5">
+<table>
   <thead>
   <tr>
     <th>ID</th>
@@ -10,12 +12,19 @@
     <th>Secteur</th>
     <th>Ville</th>
     <th>Pays</th>
-    <th>Numéro</th>
+    <th>Téléphone</th>
     <th>Email</th>
+    <th>Site Web</th>
+    <th>Points forts</th>
+    <th>Points faibles</th>
     <th>Part marché</th>
+    <th>Stratégie prix</th>
+    <th>Stratégie marketing</th>
+    <th>Remarques</th>
     <th>Actions</th>
   </tr>
   </thead>
+
   <tbody>
   <tr *ngFor="let c of concurrents">
     <td>{{ c.id_concurrent }}</td>
@@ -25,10 +34,25 @@
     <td>{{ c.pays }}</td>
     <td>{{ c.numero }}</td>
     <td>{{ c.email }}</td>
+    <td>{{ c.site_web }}</td>
+    <td>{{ c.points_forts }}</td>
+    <td>{{ c.points_faibles }}</td>
     <td>{{ c.part_de_marche }}</td>
-    <td>
-      <button (click)="modifierConcurrent(c.id_concurrent)">Modifier</button>
-      <button (click)="supprimerConcurrent(c.id_concurrent)">Supprimer</button>
+    <td>{{ c.strategie_prix }}</td>
+    <td>{{ c.strategie_marketing }}</td>
+    <td>{{ c.remarques }}</td>
+
+    <!-- COLONNE ACTIONS -->
+    <td class="actions">
+      <button class="btn-edit"
+              (click)="modifierConcurrent(c.id_concurrent)">
+        ✏ Modifier
+      </button>
+
+      <button class="btn-delete"
+              (click)="supprimerConcurrent(c.id_concurrent)">
+        🗑 Supprimer
+      </button>
     </td>
   </tr>
   </tbody>

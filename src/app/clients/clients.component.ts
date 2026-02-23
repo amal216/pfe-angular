@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../services/client.service';
+import { ClientService, Client } from '../services/client.service';
 
 @Component({
   selector: 'app-clients',
@@ -8,7 +8,7 @@ import { ClientService } from '../services/client.service';
 })
 export class ClientsComponent implements OnInit {
 
-  clients: any[] = [];
+  clients: Client[] = [];
 
   constructor(private clientService: ClientService) {}
 
@@ -21,5 +21,20 @@ export class ClientsComponent implements OnInit {
       next: (data) => this.clients = data,
       error: (err) => console.error('Erreur chargement clients', err)
     });
+  }
+
+  supprimerClient(id: number) {
+    if (confirm('Voulez-vous supprimer ce client ?')) {
+      this.clientService.delete(id).subscribe({
+        next: () => {
+          alert('Client supprimé ');
+          this.loadClients();
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Erreur suppression ');
+        }
+      });
+    }
   }
 }

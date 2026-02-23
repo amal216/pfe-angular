@@ -1,22 +1,31 @@
 <h2>Liste des Packs</h2>
-<button routerLink="/packs/ajouter">➕ Ajouter Pack</button>
 
-<table border="1" style="margin-top: 10px; width: 100%;">
+<button routerLink="/packs/ajouter" class="table-btn">
+  ➕ Ajouter packs
+</button>
+<table border="1">
   <tr>
     <th>ID</th>
     <th>Nom</th>
     <th>Description</th>
     <th>Prix</th>
+    <th>Disponibilité</th>
+    <th>Garantie</th>
+    <th>Durée Garantie</th>
     <th>Actions</th>
   </tr>
+
   <tr *ngFor="let pack of packs">
-    <td>{{ pack.id }}</td>
-    <td>{{ pack.nom }}</td>
+    <td>{{ pack.id_pack }}</td>
+    <td>{{ pack.nom_pack }}</td>
     <td>{{ pack.description }}</td>
     <td>{{ pack.prix }}</td>
+    <td>{{ pack.disponibilite }}</td>
+    <td>{{ pack.garantie }}</td>
+    <td>{{ pack.duree_garantie }}</td>
     <td>
-      <button (click)="modifierPack(pack.id)">Modifier</button>
-      <button (click)="supprimerPack(pack.id)">Supprimer</button>
+      <button *ngIf="pack.id_pack" (click)="modifierPack(pack.id_pack)">✏ Modifier</button>
+      <button *ngIf="pack.id_pack" (click)="supprimerPack(pack.id_pack)">🗑 Supprimer</button>
     </td>
   </tr>
 </table>

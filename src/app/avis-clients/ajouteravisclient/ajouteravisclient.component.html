@@ -1,13 +1,131 @@
 <h2>Ajouter Avis Client</h2>
 
-<form (ngSubmit)="ajouterAvis()">
-  <input [(ngModel)]="nouvelAvis.id_client" name="id_client" type="number" placeholder="ID Client" required>
-  <input [(ngModel)]="nouvelAvis.projet" name="projet" placeholder="Projet">
-  <input [(ngModel)]="nouvelAvis.date_appel" name="date_appel" type="date">
-  <input [(ngModel)]="nouvelAvis.note_globale" name="note_globale" type="number" min="1" max="5">
-  <input [(ngModel)]="nouvelAvis.note_service" name="note_service" type="number" min="1" max="5">
-  <textarea [(ngModel)]="nouvelAvis.commentaire" name="commentaire" placeholder="Commentaire"></textarea>
+<form (ngSubmit)="ajouterAvis()" #avisForm="ngForm">
+
+  <div>
+    <label>ID Client :</label>
+    <input type="number"
+           [(ngModel)]="nouvelAvis.id_client"
+           name="id_client"
+           required>
+  </div>
+
+  <div>
+    <label>ID Service Collecte :</label>
+    <input type="number"
+           [(ngModel)]="nouvelAvis.id_service_collecte"
+           name="id_service_collecte">
+  </div>
+
+  <div>
+    <label>Projet :</label>
+    <input type="text"
+           [(ngModel)]="nouvelAvis.projet"
+           name="projet">
+  </div>
+
+  <div>
+    <label>Date Appel :</label>
+    <input type="datetime-local"
+           [(ngModel)]="nouvelAvis.date_appel"
+           name="date_appel">
+  </div>
+
+  <h3>Notes (1 à 5)</h3>
+
+  <div *ngFor="let field of noteFields">
+    <label>{{field.label}} :</label>
+    <input type="number" min="1" max="5"
+           [(ngModel)]="nouvelAvis[field.model]"
+           name="{{field.model}}">
+  </div>
+
+  <div>
+    <label>Canal Collecte :</label>
+    <input type="text"
+           [(ngModel)]="nouvelAvis.canal_collecte"
+           name="canal_collecte">
+  </div>
+
+  <div>
+    <label>Type Produit :</label>
+    <input type="text"
+           [(ngModel)]="nouvelAvis.type_produit"
+           name="type_produit">
+  </div>
+
+  <div>
+    <label>Nom Produit :</label>
+    <input type="text"
+           [(ngModel)]="nouvelAvis.nom_produit"
+           name="nom_produit">
+  </div>
+
+  <div>
+    <label>Recommande :</label>
+    <select [(ngModel)]="nouvelAvis.recommande" name="recommande">
+      <option [ngValue]="true">Oui</option>
+      <option [ngValue]="false">Non</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Niveau Satisfaction :</label>
+    <input type="number" min="1" max="5"
+           [(ngModel)]="nouvelAvis.niveau_satisfaction"
+           name="niveau_satisfaction">
+  </div>
+
+  <div>
+    <label>Incident :</label>
+    <textarea [(ngModel)]="nouvelAvis.incident"
+              name="incident"></textarea>
+  </div>
+
+  <div>
+    <label>Niveau Urgence :</label>
+    <input type="number" min="1" max="5"
+           [(ngModel)]="nouvelAvis.niveau_urgence"
+           name="niveau_urgence">
+  </div>
+
+  <div>
+    <label>Date Traitement :</label>
+    <input type="datetime-local"
+           [(ngModel)]="nouvelAvis.date_traitement"
+           name="date_traitement">
+  </div>
+
+  <div>
+    <label>Points Positifs :</label>
+    <textarea [(ngModel)]="nouvelAvis.point_positif"
+              name="point_positif"></textarea>
+  </div>
+
+  <div>
+    <label>Points Négatifs :</label>
+    <textarea [(ngModel)]="nouvelAvis.point_negatif"
+              name="point_negatif"></textarea>
+  </div>
+
+  <div>
+    <label>Suggestion Amélioration :</label>
+    <textarea [(ngModel)]="nouvelAvis.suggestion_amelioration"
+              name="suggestion_amelioration"></textarea>
+  </div>
+
+  <div>
+    <label>Commentaire :</label>
+    <textarea [(ngModel)]="nouvelAvis.commentaire"
+              name="commentaire"></textarea>
+  </div>
+
   <button type="submit">Ajouter</button>
+  <button type="button" routerLink="/avis-clients">
+    ← Retour à la liste
+  </button>
 </form>
 
-<button routerLink="/avis-clients">🔙 Retour à la liste</button>
+<br>
+
+

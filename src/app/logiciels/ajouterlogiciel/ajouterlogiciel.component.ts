@@ -11,12 +11,12 @@ export class AjouterLogicielComponent implements OnInit {
 
   nouveauLogiciel: any = {
     nom_logiciel: '',
-    version: '',
-    prix: 0,
-    plateforme: '',
-    disponibilite: 'en stock',
     description: '',
-    garantie: 'oui'
+    categorie: '',
+    prix: '',
+    type_licence: '',
+    compatibilite: '',
+    statut: 'Disponible'
   };
   isEditing: boolean = false;
   logicielId: number | null = null;
@@ -44,23 +44,23 @@ export class AjouterLogicielComponent implements OnInit {
     if (this.isEditing && this.logicielId) {
       this.logicielService.update(this.logicielId, this.nouveauLogiciel).subscribe({
         next: () => {
-          alert('Logiciel mis à jour ✅');
+          alert('Logiciel modifié');
           this.router.navigate(['/logiciels']);
         },
         error: err => {
           console.error(err);
-          alert('Erreur lors de la mise à jour ❌');
+          alert('Erreur lors de la mise à jour ');
         }
       });
     } else {
       this.logicielService.add(this.nouveauLogiciel).subscribe({
         next: () => {
-          alert('Logiciel ajouté ✅');
+          alert('Logiciel ajouté ');
           this.router.navigate(['/logiciels']);
         },
         error: err => {
           console.error(err);
-          alert('Erreur lors de l’ajout ❌');
+          alert('Erreur lors de l’ajout ');
         }
       });
     }

@@ -1,28 +1,159 @@
+/* Corps de page */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f0f4f8;
+  margin: 20px;
+}
+
+/* Titres */
+h2 {
+  margin-bottom: 15px;
+  color: #1565c0; /* bleu foncé pro */
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Formulaire */
+form {
+  width: 400px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: black;
+}
+
+form input,
+form select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #90caf9;
+  font-size: 14px;
+  background-color: #f1f8ff;
+  transition: 0.3s;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #1e88e5;
+  outline: none;
+  box-shadow: 0 0 5px rgba(30,136,229,0.3);
+  background-color: #ffffff;
+}
+
+form button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-top: 10px;
+  background-color: #1e88e5; /* bleu vif */
+  color: white;
+}
+
+form button:hover {
+  background-color: #1565c0; /* bleu foncé au hover */
+}
+
+/* Boutons Ajouter/Retour - même style que Modifier/Supprimer */
+button.table-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+  background-color: #1e88e5;
+  color: white;
+}
+
+button.table-btn:hover {
+  background-color: #1565c0;
+  color: white;
+}
+
+/* Tableau */
 table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  border: 2px solid black; /* Bordure externe noire */
+}
 
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border: 1px solid black; /* Lignes internes noires */
+}
+
+/* Boutons dans le tableau */
+table button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 5px;
+  transition: 0.3s;
+  background-color: #1e88e5;
+  color: white;
+}
+
+table button:hover {
+  background-color: #1565c0;
+  color: white;
+}
+
+/* Responsive simple */
+@media screen and (max-width: 900px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
 
-  thead {
-    background-color: #1976d2;
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #1e88e5;
     color: white;
   }
 
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
   }
-}
 
-button[routerLink] {
-  margin-bottom: 15px;
-  padding: 5px 15px;
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  cursor: pointer;
+  td::before {
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f8fbff;
+  }
 }

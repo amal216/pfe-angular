@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService, User } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  user: User = { nom: '', email: '', password: '' };
+  user: User & { mot_de_passe: string } = { nom: '', email: '', role: 'Client', mot_de_passe: '' };
+  message = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  roles = ['Admin', 'Service Appel', 'Client', 'Gerant'];
+
+  constructor(private auth: AuthService, private router: Router) {}
 
   register() {
-    this.authService.register(this.user).subscribe({
-      next: (res: any) => {
-        console.log('Inscription réussie', res);
-        alert('Compte créé avec succès !');
+    this.auth.register(this.user).subscribe({
+      next: (res) => {
+        this.message = res.message;
         this.router.navigate(['/login']);
       },
-      error: (err: any) => {
-        console.error(err);
-        alert('Erreur lors de l’inscription');
+      error: (err) => {
+        this.message = err.error.message || 'Erreur';
       }
     });
   }

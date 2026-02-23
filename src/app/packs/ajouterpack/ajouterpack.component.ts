@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PackService, Pack } from '../../services/packs.service';
-import { NgForm } from '@angular/forms';
 
-@Component({
-  selector: 'app-ajouter-pack',
-  templateUrl: './ajouterpack.component.html',
-  styleUrls: ['./ajouterpack.component.scss']
-})
+  @Component({
+    selector: 'app-ajouter-pack',
+    templateUrl: './ajouterpack.component.html',
+    styleUrls: ['./ajouterpack.component.scss']
+  })
 export class AjouterPackComponent implements OnInit {
 
-  pack: Pack = { id: 0, nom: '', description: '', prix: 0 };
+  pack: Pack = {
+    id_pack: 0,
+    nom_pack: '',
+    prix: 0,
+    disponibilite: 'en stock',
+    garantie: 'oui',
+    duree_garantie: '1 an',
+    description: ''
+  };
+
   isEditing = false;
 
   constructor(
@@ -30,16 +38,29 @@ export class AjouterPackComponent implements OnInit {
     }
   }
 
-  save(form: NgForm): void {
+  save(): void {
     if (this.isEditing) {
-      this.packService.update(this.pack.id, this.pack).subscribe({
-        next: () => this.router.navigate(['/packs']),
-        error: err => console.error('Erreur mise à jour pack', err)
+      // id_pack est sûr maintenant grâce à l'initialisation
+      this.packService.update(this.pack.id_pack!, this.pack).subscribe({
+        next: () => {
+          alert('Pack modifiée ');
+          this.router.navigate(['/packs']);
+        },
+        error: err => {
+          console.error('Erreur de modificatio pack', err);
+          alert('Erreur de modification');
+        }
       });
     } else {
       this.packService.create(this.pack).subscribe({
-        next: () => this.router.navigate(['/packs']),
-        error: err => console.error('Erreur création pack', err)
+        next: () => {
+          alert('Pack ajouté ');
+          this.router.navigate(['/packs']);
+        },
+        error: err => {
+          console.error('Erreur création pack', err);
+          alert('Erreur création ');
+        }
       });
     }
   }

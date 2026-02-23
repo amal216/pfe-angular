@@ -1,28 +1,41 @@
-<h2>Ajouter un Abonnement</h2>
+<!-- abonnement-form.component.html -->
+<h2>{{ abonnementId ? 'Modifier Abonnement' : 'Ajouter Abonnement' }}</h2>
 
 <form (ngSubmit)="ajouterAbonnement()">
-  <input [(ngModel)]="nouvelAbonnement.nom_abonnement"
-         name="nom_abonnement"
-         placeholder="Nom Abonnement"
-         required>
+  <div>
+    <label for="nom_abonnement">Nom Abonnement :</label>
+    <input id="nom_abonnement"
+           [(ngModel)]="nouvelAbonnement.nom_abonnement"
+           name="nom_abonnement"
+           required>
+  </div>
 
-  <input [(ngModel)]="nouvelAbonnement.id_logiciel"
-         name="id_logiciel"
-         placeholder="ID Logiciel"
-         type="number"
-         required>
+  <div>
+    <label for="id_logiciel">ID Logiciel :</label>
+    <input id="id_logiciel"
+           [(ngModel)]="nouvelAbonnement.id_logiciel"
+           name="id_logiciel"
+           type="number"
+           required>
+  </div>
 
-  <input [(ngModel)]="nouvelAbonnement.prix"
-         name="prix"
-         placeholder="Prix"
-         type="number">
+  <div>
+    <label for="prix">Prix :</label>
+    <input id="prix"
+           [(ngModel)]="nouvelAbonnement.prix"
+           name="prix"
+           type="number">
+  </div>
 
-  <input [(ngModel)]="nouvelAbonnement.commentaire"
-         name="commentaire"
-         placeholder="Commentaire">
+  <div>
+    <label for="commentaire">Commentaire :</label>
+    <input id="commentaire"
+           [(ngModel)]="nouvelAbonnement.commentaire"
+           name="commentaire">
+  </div>
 
-  <button type="submit">Ajouter</button>
+  <div class="button-group">
+    <button type="submit">{{ abonnementId ? 'Modifier' : 'Ajouter' }}</button>
+    <button type="button" routerLink="/abonnements">⬅ Retour à la liste</button>
+  </div>
 </form>
-
-<!-- Bouton pour revenir à la liste -->
-<button routerLink="/abonnements">🔙 Retour à la liste</button>

@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #e3f2fd; /* bleu très clair agréable */
+}
+
+/* Formulaire */
+form {
+  width: 400px;
+  margin: 60px auto; /* centré horizontal */
+  padding: 25px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Titre */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1565c0; /* bleu foncé pour le titre */
+  font-weight: 600;
+}
+
+/* Labels */
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: black;
+}
+
+/* Inputs et Select */
+input,
+select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #90caf9; /* bord bleu clair */
+  transition: 0.3s;
+  font-size: 14px;
+  background-color: #f1f8ff; /* fond très clair bleu */
+}
+
+/* Effet focus */
+input:focus,
+select:focus {
+  border-color: #1e88e5; /* bleu vif */
+  outline: none;
+  box-shadow: 0 0 5px rgba(30, 136, 229, 0.3);
+  background-color: #ffffff;
+}
+
+/* Conteneur des boutons */
+.button-group {
+  display: flex;
+  flex-direction: column; /* empile verticalement */
+  gap: 10px; /* espace entre les boutons */
+  margin-top: 10px;
+}
+
+/* Style commun aux boutons */
+.button-group button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  width: 100%; /* mêmes dimensions que le formulaire */
+  text-align: center;
+}
+
+/* Bouton principal */
+.button-group button[type="submit"] {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.button-group button[type="submit"]:hover {
+  background-color: #1565c0;
+}
+
+/* Bouton retour */
+.button-group button[routerLink] {
+  background-color: #90caf9;
+  color: #0d47a1;
+}
+
+.button-group button[routerLink]:hover {
+  background-color: #64b5f6;
+}

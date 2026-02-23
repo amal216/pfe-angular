@@ -1,29 +1,88 @@
-<p>ajouterlogiciel works!</p>
 <h2>{{ isEditing ? 'Modifier Logiciel' : 'Ajouter Logiciel' }}</h2>
 
 <form (ngSubmit)="ajouterLogiciel()">
-  <input [(ngModel)]="nouveauLogiciel.nom_logiciel" name="nom_logiciel" placeholder="Nom logiciel" required>
-  <input [(ngModel)]="nouveauLogiciel.version" name="version" placeholder="Version">
-  <input type="number" [(ngModel)]="nouveauLogiciel.prix" name="prix" placeholder="Prix">
-  <input [(ngModel)]="nouveauLogiciel.plateforme" name="plateforme" placeholder="Plateforme">
 
-  <select [(ngModel)]="nouveauLogiciel.disponibilite" name="disponibilite">
-    <option value="en stock">En stock</option>
-    <option value="rupture">Rupture</option>
-    <option value="précommande">Précommande</option>
-    <option value="sur commande">Sur commande</option>
-    <option value="épuisé">Épuisé</option>
-    <option value="indisponible">Indisponible</option>
-  </select>
+  <!-- Nom du logiciel (liste déroulante) -->
+  <div>
+    <label>Nom du logiciel :</label>
+    <select [(ngModel)]="nouveauLogiciel.nom_logiciel" name="nom_logiciel" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="Pro Resto">Pro Resto</option>
+      <option value="Pro Mag">Pro Mag</option>
+      <option value="Pro Para">Pro Para</option>
+      <option value="Pro Mode">Pro Mode</option>
+      <option value="Pro Clean">Pro Clean</option>
+      <option value="Pro Beauty">Pro Beauty</option>
+      <option value="PRO STORE">PRO STORE</option>
+      <option value="Loc Sys">Loc Sys</option>
+    </select>
+  </div>
 
-  <input [(ngModel)]="nouveauLogiciel.description" name="description" placeholder="Description">
+  <!-- Catégorie -->
+  <div>
+    <label>Catégorie :</label>
+    <select [(ngModel)]="nouveauLogiciel.categorie" name="categorie" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="Restauration">Restauration</option>
+      <option value="Magasin">Magasin</option>
+      <option value="Pharmacie">Pharmacie</option>
+      <option value="Parapharmacie">Parapharmacie</option>
+      <option value="Beauté">Beauté</option>
+    </select>
+  </div>
 
-  <select [(ngModel)]="nouveauLogiciel.garantie" name="garantie">
-    <option value="oui">Oui</option>
-    <option value="non">Non</option>
-  </select>
+  <!-- Prix -->
+  <div>
+    <label>Prix :</label>
+    <input type="number" [(ngModel)]="nouveauLogiciel.prix" name="prix">
+  </div>
 
-  <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+  <!-- Type Licence -->
+  <div>
+    <label>Type Licence :</label>
+    <select [(ngModel)]="nouveauLogiciel.type_licence" name="type_licence" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="Mensuel">Mensuel</option>
+      <option value="Annuel">Annuel</option>
+      <option value="Achat unique">Achat unique</option>
+    </select>
+  </div>
+
+  <!-- Compatibilité -->
+  <div>
+    <label>Compatibilité :</label>
+    <select [(ngModel)]="nouveauLogiciel.compatibilite" name="compatibilite" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="Windows">Windows</option>
+      <option value="Web">Web</option>
+      <option value="Android">Android</option>
+    </select>
+  </div>
+
+  <!-- Statut -->
+  <div>
+    <label>Statut :</label>
+    <select [(ngModel)]="nouveauLogiciel.statut" name="statut" required>
+      <option value="Disponible">Disponible</option>
+      <option value="Indisponible">Indisponible</option>
+    </select>
+  </div>
+
+  <!-- Description -->
+  <div>
+    <label>Description :</label>
+    <textarea [(ngModel)]="nouveauLogiciel.description" name="description"></textarea>
+  </div>
+
+  <!-- Boutons -->
+  <div class="button-group">
+    <button type="submit">
+      {{ isEditing ? 'Modifier' : 'Ajouter' }}
+    </button>
+
+    <button routerLink="/logiciels" type="button">
+      ⬅ Retour à la liste
+    </button>
+  </div>
+
 </form>
-
-<button routerLink="/logiciels">🔙 Retour à la liste</button>

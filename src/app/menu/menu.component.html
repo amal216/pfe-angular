@@ -1,6 +1,19 @@
 <h2>Menu Principal</h2>
 
 <div class="menu-buttons">
-  <button routerLink="/login">Connexion</button>
-  <button routerLink="/register">Inscription</button>
+  <!-- Si non connecté -->
+  <button routerLink="/login" *ngIf="!authService.isLoggedIn()">Connexion</button>
+  <button routerLink="/register" *ngIf="!authService.isLoggedIn()">Inscription</button>
+
+  <!-- Si connecté -->
+  <button routerLink="/dashboard" *ngIf="authService.isLoggedIn()">Dashboard</button>
+  <button routerLink="/clients" *ngIf="authService.isLoggedIn()">Clients</button>
+  <button routerLink="/logiciels" *ngIf="authService.isLoggedIn()">Logiciels</button>
+  <button routerLink="/abonnements" *ngIf="authService.isLoggedIn()">Abonnements</button>
+  <button routerLink="/packs" *ngIf="authService.isLoggedIn()">Packs</button>
+  <button routerLink="/materiels" *ngIf="authService.isLoggedIn()">Matériels</button>
+  <button routerLink="/concurrents" *ngIf="authService.isLoggedIn()">Concurrents</button>
+  <button routerLink="/avis-clients" *ngIf="authService.isLoggedIn()">Avis Clients</button>
+
+  <button (click)="logout()" *ngIf="authService.isLoggedIn()">Déconnexion</button>
 </div>

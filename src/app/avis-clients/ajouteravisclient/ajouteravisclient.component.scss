@@ -1,23 +1,93 @@
-form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-
-  input, textarea {
-    margin-bottom: 10px;
-    padding: 5px;
-  }
-
-  button {
-    margin-top: 10px;
-    padding: 5px 15px;
-    background-color: #1976d2;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #e3f2fd;
 }
 
-button[routerLink] {
-  margin-top: 15px;
+/* Conteneur formulaire */
+form {
+  width: 500px;
+  margin: 60px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Titre */
+h2 {
+  text-align: center;
+  color: #1565c0;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Label */
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+/* Inputs + textarea + select */
+input,
+select,
+textarea {
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  border: 1px solid #bbdefb;
+  background-color: #f5f9ff;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Focus */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #1e88e5;
+  background-color: white;
+  outline: none;
+  box-shadow: 0 0 6px rgba(30, 136, 229, 0.3);
+}
+
+/* Boutons */
+form button {
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Bouton Ajouter */
+form button[type="submit"] {
+  background-color: #1e88e5;
+  color: white;
+}
+
+form button[type="submit"]:hover {
+  background-color: #1565c0;
+}
+
+/* Bouton Retour */
+form button[routerLink] {
+  background-color: #90caf9;
+  color: #0d47a1;
+}
+
+form button[routerLink]:hover {
+  background-color: #64b5f6;
 }

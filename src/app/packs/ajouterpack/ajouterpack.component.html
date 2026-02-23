@@ -1,12 +1,58 @@
 <h2>{{ isEditing ? 'Modifier Pack' : 'Ajouter Pack' }}</h2>
 
-<form #packForm="ngForm" (ngSubmit)="save(packForm)">
-  <input [(ngModel)]="pack.nom" name="nom" placeholder="Nom" required>
-  <input [(ngModel)]="pack.description" name="description" placeholder="Description">
-  <input [(ngModel)]="pack.prix" name="prix" placeholder="Prix" type="number">
+<form (ngSubmit)="save()">
 
-  <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+  <div class="form-group">
+    <label>Nom Pack :</label>
+    <input [(ngModel)]="pack.nom_pack" name="nom_pack" required>
+  </div>
+
+  <div class="form-group">
+    <label>Description :</label>
+    <input [(ngModel)]="pack.description" name="description">
+  </div>
+
+  <div class="form-group">
+    <label>Prix :</label>
+    <input [(ngModel)]="pack.prix" name="prix" type="number">
+  </div>
+
+  <div class="form-group">
+    <label>Disponibilité :</label>
+    <select [(ngModel)]="pack.disponibilite" name="disponibilite">
+      <option value="en stock">En stock</option>
+      <option value="rupture">Rupture</option>
+      <option value="précommande">Précommande</option>
+      <option value="sur commande">Sur commande</option>
+      <option value="épuisé">Épuisé</option>
+      <option value="indisponible">Indisponible</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Garantie :</label>
+    <select [(ngModel)]="pack.garantie" name="garantie">
+      <option value="oui">Oui</option>
+      <option value="non">Non</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Durée Garantie :</label>
+    <select [(ngModel)]="pack.duree_garantie" name="duree_garantie">
+      <option value="1 an">1 an</option>
+      <option value="6 mois">6 mois</option>
+    </select>
+  </div>
+
+  <div class="button-group">
+    <button type="submit">
+      {{ isEditing ? 'modifier' : 'Ajouter' }}
+    </button>
+
+    <button routerLink="/packs" type="button">
+      ⬅ Retour à la liste
+    </button>
+  </div>
+
 </form>
-
-<!-- Bouton retour -->
-<button routerLink="/packs" style="margin-top: 10px;">🔙 Retour à la liste</button>

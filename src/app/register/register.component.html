@@ -1,22 +1,11 @@
 <h2>Inscription</h2>
-
+<div *ngIf="message">{{ message }}</div>
 <form (ngSubmit)="register()">
-  <div>
-    <label>Nom :</label>
-    <input [(ngModel)]="user.nom" name="nom" required>
-  </div>
-
-  <div>
-    <label>Email :</label>
-    <input [(ngModel)]="user.email" name="email" type="email" required>
-  </div>
-
-  <div>
-    <label>Mot de passe :</label>
-    <input [(ngModel)]="user.password" name="password" type="password" required>
-  </div>
-
+  <input type="text" [(ngModel)]="user.nom" name="nom" placeholder="Nom" required />
+  <input type="email" [(ngModel)]="user.email" name="email" placeholder="Email" required />
+  <input type="password" [(ngModel)]="user.mot_de_passe" name="mot_de_passe" placeholder="Mot de passe" required />
+  <select [(ngModel)]="user.role" name="role">
+    <option *ngFor="let r of roles" [value]="r">{{ r }}</option>
+  </select>
   <button type="submit">S’inscrire</button>
 </form>
-
-<p>Déjà inscrit ? <a routerLink="/login">Se connecter</a></p>

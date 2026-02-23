@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AjouterlogicielComponent } from './ajouterlogiciel.component';
+import { AjouterLogicielComponent } from './ajouterlogiciel.component';
 
 describe('AjouterlogicielComponent', () => {
-  let component: AjouterlogicielComponent;
-  let fixture: ComponentFixture<AjouterlogicielComponent>;
+  let component: AjouterLogicielComponent;
+  let fixture: ComponentFixture<AjouterLogicielComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AjouterlogicielComponent ]
+      declarations: [ AjouterLogicielComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AjouterlogicielComponent);
+    fixture = TestBed.createComponent(AjouterLogicielComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

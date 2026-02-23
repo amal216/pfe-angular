@@ -1,39 +1,72 @@
-<p>ajoutermateriel works!</p>
 <h2>{{ editMode ? 'Modifier Matériel' : 'Ajouter Matériel' }}</h2>
 
 <form (ngSubmit)="ajouterMateriel()">
-  <input [(ngModel)]="nouveauMateriel.nom_materiel" name="nom_materiel" placeholder="Nom" required>
-  <input [(ngModel)]="nouveauMateriel.categorie" name="categorie" placeholder="Catégorie">
-  <input [(ngModel)]="nouveauMateriel.prix" name="prix" placeholder="Prix" type="number">
 
-  <select [(ngModel)]="nouveauMateriel.disponibilite" name="disponibilite">
-    <option value="en stock">En stock</option>
-    <option value="rupture">Rupture</option>
-    <option value="précommande">Précommande</option>
-    <option value="sur commande">Sur commande</option>
-    <option value="épuisé">Épuisé</option>
-    <option value="indisponible">Indisponible</option>
-  </select>
+  <div class="form-group">
+    <label>Nom du matériel</label>
+    <input [(ngModel)]="nouveauMateriel.nom_materiel" name="nom_materiel" required>
+  </div>
 
-  <select [(ngModel)]="nouveauMateriel.garantie" name="garantie">
-    <option value="oui">Oui</option>
-    <option value="non">Non</option>
-  </select>
+  <div class="form-group">
+    <label>Catégorie</label>
+    <input [(ngModel)]="nouveauMateriel.categorie" name="categorie">
+  </div>
 
-  <select [(ngModel)]="nouveauMateriel.duree_garantie" name="duree_garantie">
-    <option value="1 an">1 an</option>
-    <option value="6 mois">6 mois</option>
-  </select>
+  <div class="form-group">
+    <label>Prix</label>
+    <input [(ngModel)]="nouveauMateriel.prix" name="prix" type="number">
+  </div>
 
-  <select [(ngModel)]="nouveauMateriel.gamme" name="gamme">
-    <option value="excellente">Excellente</option>
-    <option value="moyenne">Moyenne</option>
-  </select>
+  <div class="form-group">
+    <label>Disponibilité</label>
+    <select [(ngModel)]="nouveauMateriel.disponibilite" name="disponibilite">
+      <option value="en stock">En stock</option>
+      <option value="rupture">Rupture</option>
+      <option value="précommande">Précommande</option>
+      <option value="sur commande">Sur commande</option>
+      <option value="épuisé">Épuisé</option>
+      <option value="indisponible">Indisponible</option>
+    </select>
+  </div>
 
-  <input [(ngModel)]="nouveauMateriel.description" name="description" placeholder="Description">
+  <div class="form-group">
+    <label>Garantie</label>
+    <select [(ngModel)]="nouveauMateriel.garantie" name="garantie">
+      <option value="oui">Oui</option>
+      <option value="non">Non</option>
+    </select>
+  </div>
 
-  <button type="submit">{{ editMode ? 'Modifier' : 'Ajouter' }}</button>
-  <button type="button" (click)="resetForm()">Annuler</button>
+  <div class="form-group">
+    <label>Durée de la garantie</label>
+    <select [(ngModel)]="nouveauMateriel.duree_garantie" name="duree_garantie">
+      <option value="1 an">1 an</option>
+      <option value="6 mois">6 mois</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Gamme</label>
+    <select [(ngModel)]="nouveauMateriel.gamme" name="gamme">
+      <option value="excellente">Excellente</option>
+      <option value="moyenne">Moyenne</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <input [(ngModel)]="nouveauMateriel.description" name="description">
+  </div>
+
+  <!-- ✅ LES DEUX BOUTONS ENSEMBLE -->
+  <div class="button-group">
+    <button type="submit">
+      {{ materielId ? 'Modifier' : 'Ajouter' }}
+    </button>
+
+    <button routerLink="/materiels" type="button">
+      ⬅  Retour à la liste
+    </button>
+  </div>
+
 </form>
-
-<button routerLink="/materiels">🔙 Retour à la liste</button>

@@ -51,23 +51,23 @@ export class AjouterConcurrentComponent implements OnInit {
     if(this.isEditing && this.concurrentId) {
       this.concurrentService.update(this.concurrentId, this.nouveauConcurrent).subscribe({
         next: () => {
-          alert('Concurrent mis à jour ✅');
+          alert('Concurrent modifiée ');
           this.router.navigate(['/concurrents']);
         },
         error: err => {
           console.error(err);
-          alert('Erreur lors de la mise à jour ❌');
+          alert('Erreur lors de la mise à jour ');
         }
       });
     } else {
       this.concurrentService.add(this.nouveauConcurrent).subscribe({
         next: () => {
-          alert('Concurrent ajouté ✅');
+          alert('Concurrent ajouté ');
           this.router.navigate(['/concurrents']);
         },
         error: err => {
           console.error(err);
-          alert('Erreur lors de l’ajout ❌');
+          alert('Erreur lors de l’ajout ');
         }
       });
     }

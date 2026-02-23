@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MaterielService } from '../../services/materiel.service';
+import { MaterielService, Materiel } from '../../services/materiel.service';
 
 @Component({
   selector: 'app-ajouter-materiel',
@@ -9,18 +9,9 @@ import { MaterielService } from '../../services/materiel.service';
 })
 export class AjouterMaterielComponent implements OnInit {
 
-  nouveauMateriel: any = {
-    nom_materiel: '',
-    categorie: '',
-    prix: 0,
-    disponibilite: 'en stock',
-    garantie: 'oui',
-    duree_garantie: '1 an',
-    gamme: 'excellente',
-    description: ''
-  };
-  editMode: boolean = false;
+  nouveauMateriel: Materiel = this.resetMateriel();
   materielId: number | null = null;
+  editMode: boolean = false;
 
   constructor(
     private materielService: MaterielService,
@@ -30,45 +21,65 @@ export class AjouterMaterielComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      if (params['id']) {
-        this.materielId = +params['id'];
+      const id = params['id'] ? +params['id'] : null;
+      console.log('ID reçu:', id);
+
+      if (id) {
+        this.materielId = id;
         this.editMode = true;
-        this.materielService.getById(this.materielId).subscribe({
-          next: data => this.nouveauMateriel = data,
-          error: err => console.error('Erreur chargement matériel', err)
+
+        this.materielService.getById(id).subscribe({
+          next: (data: Materiel) => {
+            console.log('Materiel reçu:', data);
+            this.nouveauMateriel = { ...data }; // remplissage complet du formulaire
+          },
+          error: err => {
+            console.error('Erreur chargement matériel', err);
+            alert('Erreur chargement matériel ');
+          }
         });
+      } else {
+        this.resetForm();
       }
     });
   }
 
   ajouterMateriel() {
     if (this.editMode && this.materielId) {
+      // MODIFICATION
       this.materielService.update(this.materielId, this.nouveauMateriel).subscribe({
         next: () => {
-          alert('Matériel mis à jour ✅');
+          alert('Matériel modifié ');
           this.router.navigate(['/materiels']);
         },
         error: err => {
           console.error(err);
-          alert('Erreur lors de la mise à jour ❌');
+          alert('Erreur modification ');
         }
       });
     } else {
+      // AJOUT
       this.materielService.add(this.nouveauMateriel).subscribe({
         next: () => {
-          alert('Matériel ajouté ✅');
+          alert('Matériel ajouté ');
           this.router.navigate(['/materiels']);
         },
         error: err => {
           console.error(err);
-          alert('Erreur lors de l’ajout ❌');
+          alert('Erreur ajout ');
         }
       });
     }
   }
 
   resetForm() {
-    this.nouveauMateriel = {
+    this.nouveauMateriel = this.resetMateriel();
+    this.materielId = null;
+    this.editMode = false;
+  }
+
+  resetMateriel(): Materiel {
+    return {
       nom_materiel: '',
       categorie: '',
       prix: 0,
@@ -78,7 +89,5 @@ export class AjouterMaterielComponent implements OnInit {
       gamme: 'excellente',
       description: ''
     };
-    this.editMode = false;
-    this.materielId = null;
   }
 }

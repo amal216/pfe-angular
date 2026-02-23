@@ -1,22 +1,81 @@
-<p>ajouterconcurrent works!</p>
-<h2>{{ isEditing ? 'Modifier Concurrent' : 'Ajouter Concurrent' }}</h2>
+<h2>{{ concurrentId ? 'Modifier Concurrent' : 'Ajouter Concurrent' }}</h2>
 
 <form (ngSubmit)="ajouterConcurrent()">
-  <input [(ngModel)]="nouveauConcurrent.nom" name="nom" placeholder="Nom" required>
-  <input [(ngModel)]="nouveauConcurrent.secteur" name="secteur" placeholder="Secteur" required>
-  <input [(ngModel)]="nouveauConcurrent.pays" name="pays" placeholder="Pays" required>
-  <input [(ngModel)]="nouveauConcurrent.ville" name="ville" placeholder="Ville" required>
-  <input [(ngModel)]="nouveauConcurrent.numero" name="numero" placeholder="Téléphone">
-  <input [(ngModel)]="nouveauConcurrent.email" name="email" placeholder="Email">
-  <input [(ngModel)]="nouveauConcurrent.site_web" name="site_web" placeholder="Site web">
-  <input [(ngModel)]="nouveauConcurrent.points_forts" name="points_forts" placeholder="Points forts">
-  <input [(ngModel)]="nouveauConcurrent.points_faibles" name="points_faibles" placeholder="Points faibles">
-  <input [(ngModel)]="nouveauConcurrent.part_de_marche" name="part_de_marche" placeholder="Part de marché">
-  <input [(ngModel)]="nouveauConcurrent.strategie_prix" name="strategie_prix" placeholder="Stratégie prix">
-  <input [(ngModel)]="nouveauConcurrent.strategie_marketing" name="strategie_marketing" placeholder="Stratégie marketing">
-  <input [(ngModel)]="nouveauConcurrent.remarques" name="remarques" placeholder="Remarques">
 
-  <button type="submit">{{ isEditing ? 'Mettre à jour' : 'Ajouter' }}</button>
+  <div>
+    <label for="nom">Nom :</label>
+    <input id="nom" [(ngModel)]="nouveauConcurrent.nom" name="nom" required>
+  </div>
+
+  <div>
+    <label for="secteur">Secteur :</label>
+    <input id="secteur" [(ngModel)]="nouveauConcurrent.secteur" name="secteur" required>
+  </div>
+
+  <div>
+    <label for="pays">Pays :</label>
+    <input id="pays" [(ngModel)]="nouveauConcurrent.pays" name="pays" required>
+  </div>
+
+  <div>
+    <label for="ville">Ville :</label>
+    <input id="ville" [(ngModel)]="nouveauConcurrent.ville" name="ville" required>
+  </div>
+
+  <div>
+    <label for="numero">Téléphone :</label>
+    <input id="numero" [(ngModel)]="nouveauConcurrent.numero" name="numero">
+  </div>
+
+  <div>
+    <label for="email">Email :</label>
+    <input id="email" type="email" [(ngModel)]="nouveauConcurrent.email" name="email">
+  </div>
+
+  <div>
+    <label for="site_web">Site Web :</label>
+    <input id="site_web" [(ngModel)]="nouveauConcurrent.site_web" name="site_web">
+  </div>
+
+  <div>
+    <label for="points_forts">Points forts :</label>
+    <input id="points_forts" [(ngModel)]="nouveauConcurrent.points_forts" name="points_forts">
+  </div>
+
+  <div>
+    <label for="points_faibles">Points faibles :</label>
+    <input id="points_faibles" [(ngModel)]="nouveauConcurrent.points_faibles" name="points_faibles">
+  </div>
+
+  <div>
+    <label for="part_de_marche">Part de marché :</label>
+    <input id="part_de_marche" [(ngModel)]="nouveauConcurrent.part_de_marche" name="part_de_marche">
+  </div>
+
+  <div>
+    <label for="strategie_prix">Stratégie prix :</label>
+    <input id="strategie_prix" [(ngModel)]="nouveauConcurrent.strategie_prix" name="strategie_prix">
+  </div>
+
+  <div>
+    <label for="strategie_marketing">Stratégie marketing :</label>
+    <input id="strategie_marketing" [(ngModel)]="nouveauConcurrent.strategie_marketing" name="strategie_marketing">
+  </div>
+
+  <div>
+    <label for="remarques">Remarques :</label>
+    <input id="remarques" [(ngModel)]="nouveauConcurrent.remarques" name="remarques">
+  </div>
+
+  <br>
+
+  <div class="button-group">
+    <button type="submit">
+      {{ concurrentId ? 'Modifier' : 'Ajouter' }}
+    </button>
+
+    <button type="button" routerLink="/concurrents">
+      ⬅ Retour à la liste
+    </button>
+  </div>
 </form>
-
-<button routerLink="/concurrents">🔙 Retour à la liste</button>

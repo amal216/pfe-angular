@@ -1,23 +1,173 @@
+/* Corps de page */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f0f4f8;
+  margin: 20px;
+}
+
+/* Titre */
+h2 {
+  margin-bottom: 15px;
+  color: #1565c0; /* bleu foncé pro */
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Formulaire */
+form {
+  width: 400px;
+  margin: 60px auto; /* centré horizontal */
+  padding: 25px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: black;
+}
+
+/* Inputs et Select */
+form input,
+form select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #90caf9; /* bord bleu clair */
+  transition: 0.3s;
+  font-size: 14px;
+  background-color: #f1f8ff; /* fond très clair bleu */
+}
+
+form input:focus,
+form select:focus {
+  border-color: #1e88e5; /* bleu vif */
+  outline: none;
+  box-shadow: 0 0 5px rgba(30, 136, 229, 0.3);
+  background-color: #ffffff;
+}
+
+/* Tous les boutons du formulaire */
+form button {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-top: 10px;
+  background-color: #1e88e5; /* bleu vif */
+  color: white;
+}
+
+form button:hover {
+  background-color: #1565c0; /* bleu foncé au hover */
+}
+
+/* Bouton Ajouter Client (tableau) */
+button[routerLink].add-client {
+  background-color: #1e88e5; /* bleu vif */
+  color: white;              /* texte blanc */
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  margin-bottom: 15px;
+}
+
+button[routerLink].add-client:hover {
+  background-color: #1565c0; /* bleu foncé au hover */
+}
+
+/* Tableau */
 table {
   width: 100%;
   border-collapse: collapse;
   font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+  border: 2px solid black; /* Bordure externe noire */
+}
 
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border: 1px solid black; /* Lignes internes noires */
+}
+
+/* Lignes alternées */
+tbody tr:nth-child(even) {
+  background-color: #bbdefb; /* bleu très clair */
+}
+
+/* Hover sur les lignes */
+tbody tr:hover {
+  background-color: #90caf9; /* bleu clair plus foncé au hover */
+  transition: 0.3s;
+}
+
+/* Boutons dans le tableau - uniformisés comme formulaire */
+table button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 5px;
+  transition: 0.3s;
+  background-color: #1e88e5; /* bleu vif */
+  color: white;
+}
+
+table button:hover {
+  background-color: #1565c0; /* bleu foncé au hover */
+  color: white;
+}
+
+/* Responsive simple */
+@media screen and (max-width: 900px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
 
-  thead {
-    background-color: #1976d2;
+  th {
+    position: sticky;
+    top: 0;
+    background-color: #1e88e5;
     color: white;
   }
 
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
   }
-}
 
-h2 {
-  margin-bottom: 10px;
+  td::before {
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    white-space: nowrap;
+    font-weight: bold;
+    content: attr(data-label);
+  }
+
+  tbody tr {
+    margin-bottom: 15px;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f8fbff;
+  }
 }

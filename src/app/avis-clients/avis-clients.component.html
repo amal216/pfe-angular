@@ -1,28 +1,72 @@
 <h2>Liste des Avis Clients</h2>
 
-<button routerLink="/avis-client/ajouter">➕ Ajouter Avis Client</button>
+<button routerLink="/avis-clients/ajouter" class="table-btn">
+  ➕ Ajouter avis-clients
+</button>
+<table border="1" cellpadding="5">
 
-<table>
   <thead>
   <tr>
     <th>ID</th>
-    <th>Client</th>
+    <th>ID Client</th>
+    <th>ID Service Collecte</th>
     <th>Projet</th>
     <th>Date Appel</th>
+
+    <!-- Notes -->
     <th>Note Globale</th>
     <th>Note Service</th>
+    <th>Note Qualité</th>
+    <th>Note Prix</th>
+    <th>Note Livraison</th>
+    <th>Note Facilité Utilisation</th>
+    <th>Note Service Après Vente</th>
+
+    <th>Canal Collecte</th>
+    <th>Type Produit</th>
+    <th>Nom Produit</th>
+    <th>Recommande</th>
+    <th>Niveau Satisfaction</th>
+    <th>Incident</th>
+    <th>Niveau Urgence</th>
+    <th>Date Traitement</th>
+    <th>Points Positifs</th>
+    <th>Points Négatifs</th>
+    <th>Suggestion Amélioration</th>
     <th>Commentaire</th>
   </tr>
   </thead>
+
   <tbody>
   <tr *ngFor="let a of avisClients">
     <td>{{ a.id }}</td>
     <td>{{ a.id_client }}</td>
+    <td>{{ a.id_service_collecte }}</td>
     <td>{{ a.projet }}</td>
     <td>{{ a.date_appel }}</td>
+
+    <!-- Notes -->
     <td>{{ a.note_globale }}</td>
     <td>{{ a.note_service }}</td>
+    <td>{{ a.note_qualite }}</td>
+    <td>{{ a.note_prix }}</td>
+    <td>{{ a.note_livraison }}</td>
+    <td>{{ a.note_facilite_utilisation }}</td>
+    <td>{{ a.note_service_apres_vente }}</td>
+
+    <td>{{ a.canal_collecte }}</td>
+    <td>{{ a.type_produit }}</td>
+    <td>{{ a.nom_produit }}</td>
+    <td>{{ a.recommande ? 'Oui' : 'Non' }}</td>
+    <td>{{ a.niveau_satisfaction }}</td>
+    <td>{{ a.incident }}</td>
+    <td>{{ a.niveau_urgence }}</td>
+    <td>{{ a.date_traitement }}</td>
+    <td>{{ a.point_positif }}</td>
+    <td>{{ a.point_negatif }}</td>
+    <td>{{ a.suggestion_amelioration }}</td>
     <td>{{ a.commentaire }}</td>
   </tr>
   </tbody>
+
 </table>

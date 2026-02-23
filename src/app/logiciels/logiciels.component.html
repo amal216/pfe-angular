@@ -1,34 +1,38 @@
 <h2>Liste des Logiciels</h2>
 
-<button routerLink="/logiciels/ajouter">➕ Ajouter Logiciel</button>
+<button routerLink="/logiciels/ajouter" class="table-btn">
+  ➕ Ajouter Logiciel
+</button>
 
-<table border="1" cellpadding="5">
+<table>
   <thead>
   <tr>
     <th>ID</th>
     <th>Nom</th>
-    <th>Version</th>
+    <th>Catégorie</th>
     <th>Prix</th>
-    <th>Plateforme</th>
-    <th>Disponibilité</th>
+    <th>Type Licence</th>
+    <th>Compatibilité</th>
+    <th>Statut</th>
     <th>Description</th>
-    <th>Garantie</th>
     <th>Actions</th>
   </tr>
   </thead>
+
   <tbody>
   <tr *ngFor="let l of logiciels">
     <td>{{ l.id_logiciel }}</td>
     <td>{{ l.nom_logiciel }}</td>
-    <td>{{ l.version }}</td>
+    <td>{{ l.categorie }}</td>
     <td>{{ l.prix }}</td>
-    <td>{{ l.plateforme }}</td>
-    <td>{{ l.disponibilite }}</td>
+    <td>{{ l.type_licence }}</td>
+    <td>{{ l.compatibilite }}</td>
+    <td>{{ l.statut }}</td>
     <td>{{ l.description }}</td>
-    <td>{{ l.garantie }}</td>
+
     <td>
-      <button (click)="modifierLogiciel(l.id_logiciel)">Modifier</button>
-      <button (click)="supprimerLogiciel(l.id_logiciel)">Supprimer</button>
+      <button (click)="modifierLogiciel(l.id_logiciel)">✏ Modifier</button>
+      <button (click)="supprimerLogiciel(l.id_logiciel)">🗑 Supprimer</button>
     </td>
   </tr>
   </tbody>
